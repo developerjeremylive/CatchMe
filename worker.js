@@ -1,0 +1,1 @@
+export default { async fetch(request) { return new Responf("CatchMe Playground Demo - Deploy from GitHub", { headers:{ "Content-type": "text/plain" } }); } };
