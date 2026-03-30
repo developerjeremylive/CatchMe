@@ -1,0 +1,3 @@
+name = "catchme-playground"
+main = "worker.js"
+compatibiledate = "2024-01-01"
