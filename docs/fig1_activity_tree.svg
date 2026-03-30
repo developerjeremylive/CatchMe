@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 425" width="940" height="425" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <filter id="f1-ds" x="-6%" y="-14%" width="112%" height="136%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#1a1a1a" flood-opacity="0.05"/>
+    </filter>
+    <marker id="f1-ah" viewBox="0 0 10 7" refX="9" refY="3.5" markerWidth="6" markerHeight="4.5" orient="auto">
+      <polygon points="0 0.8,8 3.5,0 6.2" fill="#c5bfb7"/>
+    </marker>
+    <marker id="f1-ao" viewBox="0 0 10 7" refX="9" refY="3.5" markerWidth="6" markerHeight="4.5" orient="auto">
+      <polygon points="0 0.8,8 3.5,0 6.2" fill="#c0654a"/>
+    </marker>
+    <filter id="f1-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#c0654a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- ??? TIMELINE ??? -->
+  <line x1="42" y1="18" x2="810" y2="18" class="svg-line" stroke="#e5e0da" stroke-width="1.2"/>
+  <text x="46" y="10" font-size="9" class="svg-text-2" fill="#b5b0a8" font-weight="500">9:00</text>
+  <text x="258" y="10" font-size="9" class="svg-text-2" fill="#b5b0a8" font-weight="500">10:30</text>
+  <text x="490" y="10" font-size="9" class="svg-text-2" fill="#b5b0a8" font-weight="500">12:00</text>
+  <text x="718" y="10" font-size="9" class="svg-text-2" fill="#b5b0a8" font-weight="500">now</text>
+  <text x="832" y="12" font-size="9" font-style="italic" fill="#c0654a" font-weight="500">time &#x2192;</text>
+
+  <g>
+    <circle cx="62"  cy="18" r="2.5" fill="#c0654a" opacity="0.18"/>
+    <circle cx="80"  cy="18" r="2.5" fill="#c0654a" opacity="0.21"/>
+    <circle cx="96"  cy="18" r="2.5" fill="#c0654a" opacity="0.24"/>
+    <circle cx="116" cy="18" r="2.5" fill="#c0654a" opacity="0.27"/>
+    <circle cx="134" cy="18" r="2.5" fill="#c0654a" opacity="0.29"/>
+    <circle cx="156" cy="18" r="2.5" fill="#c0654a" opacity="0.31"/>
+    <circle cx="178" cy="18" r="2.5" fill="#c0654a" opacity="0.33"/>
+    <circle cx="200" cy="18" r="2.5" fill="#c0654a" opacity="0.35"/>
+    <circle cx="220" cy="18" r="2.5" fill="#c0654a" opacity="0.37"/>
+    <circle cx="240" cy="18" r="2.5" fill="#c0654a" opacity="0.39"/>
+    <circle cx="284" cy="18" r="2.5" fill="#c0654a" opacity="0.41"/>
+    <circle cx="310" cy="18" r="2.5" fill="#c0654a" opacity="0.43"/>
+    <circle cx="338" cy="18" r="2.5" fill="#c0654a" opacity="0.45"/>
+    <circle cx="366" cy="18" r="2.5" fill="#c0654a" opacity="0.47"/>
+    <circle cx="394" cy="18" r="2.5" fill="#c0654a" opacity="0.49"/>
+    <circle cx="422" cy="18" r="2.5" fill="#c0654a" opacity="0.51"/>
+    <circle cx="450" cy="18" r="2.5" fill="#c0654a" opacity="0.53"/>
+    <circle cx="478" cy="18" r="2.5" fill="#c0654a" opacity="0.55"/>
+    <circle cx="540" cy="18" r="2.5" fill="#c0654a" opacity="0.58"/>
+    <circle cx="568" cy="18" r="2.5" fill="#c0654a" opacity="0.62"/>
+    <circle cx="596" cy="18" r="2.5" fill="#c0654a" opacity="0.66"/>
+    <circle cx="622" cy="18" r="2.8" fill="#c0654a" opacity="0.70"/>
+    <circle cx="648" cy="18" r="2.8" fill="#c0654a" opacity="0.76"/>
+    <circle cx="672" cy="18" r="2.8" fill="#c0654a" opacity="0.82"/>
+    <circle cx="696" cy="18" r="3.0" fill="#c0654a" opacity="0.88"/>
+    <circle cx="720" cy="18" r="3.2" fill="#c0654a" opacity="0.95"/>
+  </g>
+  <circle cx="720" cy="18" r="7" fill="#c0654a" opacity="0.10"/>
+  <text x="430" y="40" text-anchor="middle" font-size="9.5" class="svg-text-2" fill="#b5b0a8">raw event stream (clicks, keystrokes, window switches, ...)</text>
+
+  <!-- ??? LEVEL 0: DAY ??? -->
+  <rect x="325" y="54" width="230" height="34" rx="8" class="svg-box" fill="#fff" stroke="#e0dbd5" filter="url(#f1-ds)"/>
+  <text x="440" y="76" text-anchor="middle" font-size="12.5" font-weight="600" class="svg-text" fill="#333">Day: 2026-03-23</text>
+  <text x="878" y="76" font-size="8.5" class="svg-text-2" fill="#c5bfb7" font-style="italic">day</text>
+
+  <!-- ??? ARROWS: Day ? Sessions ??? -->
+  <path d="M 380,88 Q 272,106 168,112" class="svg-line" stroke="#c5bfb7" stroke-width="1.2" fill="none" marker-end="url(#f1-ah)"/>
+  <path d="M 440,88 Q 432,100 418,112" class="svg-line" stroke="#c5bfb7" stroke-width="1.2" fill="none" marker-end="url(#f1-ah)"/>
+  <path d="M 500,88 Q 582,106 658,112" stroke="#c0654a" stroke-width="1.5" fill="none" marker-end="url(#f1-ao)"/>
+
+  <!-- ??? ACTIVE BRANCH GLOW ??? -->
+  <rect x="556" y="108" width="228" height="216" rx="16" fill="#c0654a" opacity="0.03"/>
+
+  <!-- ??? LEVEL 1: SESSIONS ??? -->
+  <rect x="28" y="114" width="270" height="40" rx="8" class="svg-box" fill="#f0ebe5" stroke="#d8d2ca" filter="url(#f1-ds)"/>
+  <text x="163" y="135" text-anchor="middle" font-size="11.5" font-weight="500" class="svg-text" fill="#555">Session 1 &#x2014; Morning Deep Work</text>
+  <text x="163" y="149" text-anchor="middle" font-size="8" font-style="italic" class="svg-text-2" fill="#b5b0a8">&#x2713; summarized</text>
+
+  <rect x="324" y="114" width="180" height="40" rx="8" class="svg-box" fill="#f0ebe5" stroke="#d8d2ca" filter="url(#f1-ds)"/>
+  <text x="414" y="135" text-anchor="middle" font-size="11.5" font-weight="500" class="svg-text" fill="#555">Session 2 &#x2014; Post-Lunch</text>
+  <text x="414" y="149" text-anchor="middle" font-size="8" font-style="italic" class="svg-text-2" fill="#b5b0a8">&#x2713; summarized</text>
+
+  <rect x="568" y="114" width="192" height="40" rx="8" class="svg-box-accent" fill="#fdf5f1" stroke="#c0654a" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#f1-glow)"/>
+  <text x="664" y="139" text-anchor="middle" font-size="11.5" font-weight="600" fill="#c0654a">Session 3 &#x2014; active</text>
+
+  <text x="878" y="138" font-size="8.5" class="svg-text-2" fill="#c5bfb7" font-style="italic">sessions</text>
+
+  <!-- ??? ARROWS: Session ? Apps ??? -->
+  <path d="M 120,154 Q 108,167 96,178" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none"/>
+  <path d="M 206,154 Q 220,167 233,178" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none"/>
+  <path d="M 380,154 Q 370,167 364,178" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M 448,154 Q 458,167 464,178" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M 664,154 L 664,178" stroke="#c0654a" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+
+  <!-- ??? LEVEL 2: APPS ??? -->
+  <rect x="38" y="180" width="108" height="26" rx="6" class="svg-box" fill="#f7f3ee" stroke="#e5e0da" filter="url(#f1-ds)"/>
+  <text x="92" y="198" text-anchor="middle" font-size="10.5" class="svg-text" fill="#666">Cursor</text>
+
+  <rect x="180" y="180" width="108" height="26" rx="6" class="svg-box" fill="#f7f3ee" stroke="#e5e0da" filter="url(#f1-ds)"/>
+  <text x="234" y="198" text-anchor="middle" font-size="10.5" class="svg-text" fill="#666">Chrome</text>
+
+  <!-- Session 2 children (ghost shapes, aligned with S1 levels) -->
+  <!-- App level: y=180 h=26 (same as S1 Cursor/Chrome) -->
+  <g opacity="0.38">
+    <rect x="344" y="180" width="64" height="26" rx="6" fill="#ece8e2" stroke="#ddd"/>
+    <rect x="424" y="180" width="64" height="26" rx="6" fill="#ece8e2" stroke="#ddd"/>
+  </g>
+  <!-- Location level: y=234 h=26 (same as S1 retrieve.py/arxiv.org) -->
+  <g opacity="0.24">
+    <path d="M 376,206 L 376,232" stroke="#d8d2ca" stroke-width="0.7" fill="none"/>
+    <path d="M 456,206 L 456,232" stroke="#d8d2ca" stroke-width="0.7" fill="none"/>
+    <rect x="342" y="234" width="68" height="26" rx="6" fill="#ece8e2" stroke="#ddd"/>
+    <rect x="422" y="234" width="68" height="26" rx="6" fill="#ece8e2" stroke="#ddd"/>
+  </g>
+  <!-- Action level: y=282 h=20 (same as S1 typing/click&scroll) -->
+  <g opacity="0.15">
+    <path d="M 364,260 Q 356,270 350,280" stroke="#d8d2ca" stroke-width="0.6" fill="none"/>
+    <path d="M 388,260 Q 396,270 402,280" stroke="#d8d2ca" stroke-width="0.6" fill="none"/>
+    <rect x="326" y="282" width="48" height="20" rx="10" fill="#ece8e2" stroke="#ddd"/>
+    <rect x="380" y="282" width="48" height="20" rx="10" fill="#ece8e2" stroke="#ddd"/>
+    <path d="M 456,260 L 456,280" stroke="#d8d2ca" stroke-width="0.6" fill="none"/>
+    <rect x="434" y="282" width="48" height="20" rx="10" fill="#ece8e2" stroke="#ddd"/>
+  </g>
+  <text x="414" y="316" text-anchor="middle" font-size="9" class="svg-text-2" fill="#d4d0ca">&#x22EF;</text>
+
+  <rect x="612" y="180" width="106" height="26" rx="6" class="svg-box-accent" fill="#fdf5f1" stroke="#c0654a" stroke-dasharray="3,2"/>
+  <text x="665" y="198" text-anchor="middle" font-size="10.5" fill="#c0654a">Cursor</text>
+
+  <text x="878" y="198" font-size="8.5" class="svg-text-2" fill="#c5bfb7" font-style="italic">apps</text>
+
+  <!-- ??? ARROWS: App ? Location ??? -->
+  <path d="M 92,206 L 92,232" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none"/>
+  <path d="M 234,206 L 234,232" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none"/>
+  <path d="M 665,206 L 665,232" stroke="#c0654a" stroke-width="1" stroke-dasharray="3,2" fill="none"/>
+
+  <!-- ??? LEVEL 3: LOCATIONS ??? -->
+  <rect x="22" y="234" width="140" height="26" rx="6" class="svg-box" fill="#f7f3ee" stroke="#e5e0da" filter="url(#f1-ds)"/>
+  <text x="92" y="252" text-anchor="middle" font-size="10" class="svg-text" fill="#666">retrieve.py</text>
+
+  <rect x="172" y="234" width="124" height="26" rx="6" class="svg-box" fill="#f7f3ee" stroke="#e5e0da" filter="url(#f1-ds)"/>
+  <text x="234" y="252" text-anchor="middle" font-size="10" class="svg-text" fill="#666">arxiv.org</text>
+
+  <rect x="596" y="234" width="140" height="26" rx="6" class="svg-box-accent" fill="#fdf5f1" stroke="#c0654a" stroke-dasharray="3,2"/>
+  <text x="666" y="252" text-anchor="middle" font-size="10" fill="#c0654a">index.html</text>
+
+  <text x="878" y="252" font-size="8.5" class="svg-text-2" fill="#c5bfb7" font-style="italic">locations</text>
+
+  <!-- ??? ARROWS: Location ? Action ??? -->
+  <path d="M 68,260 Q 62,270 58,280" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none"/>
+  <path d="M 116,260 Q 124,270 130,280" class="svg-line" stroke="#d8d2ca" stroke-width="1" fill="none"/>
+  <path d="M 642,260 Q 638,270 634,280" stroke="#c0654a" stroke-width="1" stroke-dasharray="3,2" fill="none"/>
+  <path d="M 690,260 Q 696,270 700,280" stroke="#c0654a" stroke-width="1" stroke-dasharray="3,2" fill="none"/>
+
+  <!-- ??? LEVEL 4: ACTIONS ??? -->
+  <rect x="24" y="282" width="62" height="20" rx="10" class="svg-box" fill="#f0ebe5" stroke="#ddd"/>
+  <text x="55" y="296" text-anchor="middle" font-size="8.5" class="svg-text" fill="#888">typing</text>
+
+  <rect x="96" y="282" width="88" height="20" rx="10" class="svg-box" fill="#f0ebe5" stroke="#ddd"/>
+  <text x="140" y="296" text-anchor="middle" font-size="8.5" class="svg-text" fill="#888">click &amp; scroll</text>
+
+  <rect x="604" y="282" width="60" height="20" rx="10" class="svg-box-accent" fill="#fdf5f1" stroke="#c0654a" stroke-dasharray="3,2"/>
+  <text x="634" y="296" text-anchor="middle" font-size="8.5" fill="#c0654a">typing</text>
+
+  <rect x="676" y="282" width="56" height="20" rx="10" class="svg-box-accent" fill="#fdf5f1" stroke="#c0654a" stroke-dasharray="3,2"/>
+  <text x="704" y="296" text-anchor="middle" font-size="8.5" fill="#c0654a">scroll</text>
+
+  <text x="878" y="296" font-size="8.5" class="svg-text-2" fill="#c5bfb7" font-style="italic">actions</text>
+
+  <!-- ??? CLUSTERING VISUALIZATION (active side) ??? -->
+  <g opacity="0.55">
+    <circle cx="610" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="617" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="623" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="629" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="636" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="653" cy="314" r="1.2" fill="#c0654a" opacity="0.35"/>
+    <circle cx="661" cy="314" r="1.2" fill="#c0654a" opacity="0.35"/>
+    <circle cx="681" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="688" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="695" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="702" cy="314" r="1.5" fill="#c0654a"/>
+    <circle cx="709" cy="314" r="1.5" fill="#c0654a"/>
+  </g>
+  <line x1="609" y1="319" x2="637" y2="319" stroke="#c0654a" stroke-width="0.6" opacity="0.3"/>
+  <line x1="680" y1="319" x2="710" y2="319" stroke="#c0654a" stroke-width="0.6" opacity="0.3"/>
+  <text x="660" y="334" text-anchor="middle" font-size="7.5" font-style="italic" fill="#c0654a" opacity="0.65">events cluster by time proximity</text>
+
+  <!-- ??? BOTTOM-LEFT: SUMMARY CASCADE ??? -->
+  <path d="M 92,304 L 92,350 Q 92,356 100,356 L 140,356" class="svg-line" stroke="#c5bfb7" stroke-width="1" fill="none" stroke-dasharray="3,2" marker-end="url(#f1-ah)"/>
+  <text x="148" y="360" font-size="9" class="svg-text-2" fill="#b5b0a8" font-style="italic">summaries propagate bottom-up</text>
+
+  <g transform="translate(38, 378)">
+    <rect x="0" y="0" width="48" height="16" rx="8" fill="#f0ebe5" stroke="#ddd"/>
+    <text x="24" y="12" text-anchor="middle" font-size="7" fill="#888">action</text>
+
+    <text x="58" y="5" font-size="6.5" fill="#c0654a" font-weight="600">&#x2726;</text>
+    <path d="M 52,8 L 70,8" stroke="#c5bfb7" stroke-width="0.8" fill="none" marker-end="url(#f1-ah)"/>
+
+    <rect x="74" y="0" width="56" height="16" rx="6" fill="#f7f3ee" stroke="#e5e0da"/>
+    <text x="102" y="12" text-anchor="middle" font-size="7" fill="#888">location</text>
+
+    <text x="140" y="5" font-size="6.5" fill="#c0654a" font-weight="600">&#x2726;</text>
+    <path d="M 134,8 L 152,8" stroke="#c5bfb7" stroke-width="0.8" fill="none" marker-end="url(#f1-ah)"/>
+
+    <rect x="156" y="0" width="52" height="16" rx="6" fill="#f0ebe5" stroke="#d8d2ca"/>
+    <text x="182" y="12" text-anchor="middle" font-size="7" fill="#888">session</text>
+
+    <text x="218" y="5" font-size="6.5" fill="#c0654a" font-weight="600">&#x2726;</text>
+    <path d="M 212,8 L 230,8" stroke="#c5bfb7" stroke-width="0.8" fill="none" marker-end="url(#f1-ah)"/>
+
+    <rect x="234" y="0" width="36" height="16" rx="6" fill="#fff" stroke="#e0dbd5"/>
+    <text x="252" y="12" text-anchor="middle" font-size="7" fill="#888">day</text>
+  </g>
+  <text x="38" y="408" font-size="7.5" fill="#b5b0a8">&#x2726; = LLM summarize</text>
+
+  <!-- ??? BOTTOM-RIGHT: LIVE & INCREMENTAL ??? -->
+  <rect x="520" y="350" width="282" height="62" rx="10" fill="none" stroke="#c0654a" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="661" y="372" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c0654a">Live &amp; Incremental</text>
+  <text x="661" y="388" text-anchor="middle" font-size="8.5" class="svg-text-2" fill="#b5b0a8">new events extend the current branch;</text>
+  <text x="661" y="402" text-anchor="middle" font-size="8.5" class="svg-text-2" fill="#b5b0a8">closed nodes are summarized immediately</text>
+</svg>

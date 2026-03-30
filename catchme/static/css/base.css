@@ -1,0 +1,33 @@
+/* ── Reset & Variables ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F5F7;--surface:#FFFFFF;--surface-glass:rgba(255,255,255,.72);--surface-hover:rgba(0,0,0,.03);
+  --border:rgba(0,0,0,.08);--border-hover:rgba(0,0,0,.14);
+  --text-primary:#1D1D1F;--text-secondary:#6E6E73;--text-tertiary:#86868B;
+  --accent:#0071E3;--accent-hover:#0077ED;--accent-bg:rgba(0,113,227,.08);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 14px rgba(0,0,0,.08);--shadow-lg:0 12px 40px rgba(0,0,0,.12);--shadow-xl:0 24px 80px rgba(0,0,0,.16);
+  --radius-xl:20px;--radius-lg:14px;--radius-md:10px;--radius-sm:6px;--radius-full:9999px;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+  --font-display:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+  --font-body:'Lora',Georgia,serif;
+  --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+  --ease:cubic-bezier(.4,0,.2,1);--spring:cubic-bezier(.175,.885,.32,1.275);
+  --sidebar-w:210px;--detail-w:420px;
+  --c-window:#FF9500;--c-keyboard:#FFCC00;--c-mouse:#FF2D55;--c-screen:#FF3B30;
+  --c-clipboard:#AF52DE;--c-idle:#8E8E93;--c-notification:#FF3B30;
+  --c-sysaudio:#5AC8FA;--c-audio:#5856D6;--c-video:#30D158;
+  --c-day:#4B7BE5;--c-session:#50B87A;--c-app:#6CB4D9;--c-location:#5BA3B5;
+  --c-action:#A372D4;--c-span:#D4933A;
+}
+html.dark{
+  --bg:#000000;--surface:#1C1C1E;--surface-glass:rgba(28,28,30,.78);--surface-hover:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.1);--border-hover:rgba(255,255,255,.16);
+  --text-primary:#F5F5F7;--text-secondary:#98989D;--text-tertiary:#636366;
+  --accent:#0A84FF;--accent-hover:#409CFF;--accent-bg:rgba(10,132,255,.14);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.3);--shadow-md:0 4px 14px rgba(0,0,0,.4);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.5);--shadow-xl:0 24px 80px rgba(0,0,0,.6);
+  --c-day:#5B8AE8;--c-session:#50C47C;--c-app:#72CCEF;--c-location:#6CC0DB;--c-action:#B88DE6;--c-span:#E0A54A;
+}
+html{font-size:14px}
+body{font-family:var(--font);background:var(--bg);color:var(--text-primary);display:flex;height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transition:background .4s var(--ease),color .3s var(--ease)}

@@ -1,0 +1,65 @@
+"""macOS system notification recorder via NSDistributedNotificationCenter."""
+
+from __future__ import annotations
+
+import threading
+
+from ..recorder import Emit
+
+_BLOCKLIST = frozenset(
+    [
+        "com.apple.carbon.core.DirectoryNotification",
+        "AppleSystemUISoundSettingsChanged",
+        "NSWorkspaceCompletedURLMountNotification",
+    ]
+)
+
+
+class NotificationRecorder:
+    kind = "notification"
+
+    def __init__(self) -> None:
+        self._thread: threading.Thread | None = None
+        self._emit: Emit | None = None
+        self._loop_ref = None
+
+    def start(self, emit: Emit) -> None:
+        self._emit = emit
+        self._thread = threading.Thread(target=self._run, daemon=True)
+        self._thread.start()
+
+    def stop(self) -> None:
+        try:
+            from CoreFoundation import CFRunLoopStop
+
+            if self._loop_ref:
+                CFRunLoopStop(self._loop_ref)
+        except Exception:
+            pass
+
+    def _run(self) -> None:
+        from CoreFoundation import CFRunLoopGetCurrent, CFRunLoopRun
+        from Foundation import NSDistributedNotificationCenter, NSObject
+
+        recorder = self
+
+        class Observer(NSObject):
+            def handle_(self, note):
+                name = str(note.name())
+                if name in _BLOCKLIST:
+                    return
+                info = note.userInfo()
+                data = {"name": name}
+                if info:
+                    try:
+                        data["info"] = {str(k): str(v) for k, v in info.items()}
+                    except Exception:
+                        pass
+                if recorder._emit:
+                    recorder._emit(data)
+
+        center = NSDistributedNotificationCenter.defaultCenter()
+        obs = Observer.alloc().init()
+        center.addObserver_selector_name_object_(obs, "handle:", None, None)
+        self._loop_ref = CFRunLoopGetCurrent()
+        CFRunLoopRun()

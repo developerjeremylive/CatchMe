@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="56" viewBox="0 0 420 56">
+  <style>
+    .cover { animation: reveal 1.3s steps(13, end) 0.6s forwards; }
+    .caret { animation: slide 1.3s steps(13, end) 0.6s forwards, blink 1s step-end 1.9s infinite; }
+    @keyframes reveal { to { transform: translateX(128px); } }
+    @keyframes slide  { to { transform: translateX(128px); } }
+    @keyframes blink  { 50% { opacity: 0; } }
+  </style>
+
+  <rect width="420" height="56" rx="10" fill="#faf9f7" stroke="#e5e0da" stroke-width="1"/>
+
+  <text x="20" y="35" fill="#c0654a" font-family="monospace" font-size="15" font-weight="bold">$</text>
+  <text x="36" y="35" fill="#3d2e24" font-family="monospace" font-size="15">catchme </text>
+  <text x="108" y="35" fill="#c0654a" font-family="monospace" font-size="15">awake</text>
+
+  <rect class="cover" x="36" y="18" width="170" height="26" fill="#faf9f7"/>
+  <rect class="caret" x="36" y="22" width="2" height="18" rx="1" fill="#c0654a"/>
+</svg>

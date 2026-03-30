@@ -1,0 +1,503 @@
+# Summarization prompts for each tree level.
+# Each key has `en` and `zh` sub-keys. The active language is chosen
+# via  summarize.language  in config.json  (default: "en").
+#
+# All levels output a two-part structure separated by "## Summary" and
+# "## Evidence" headers.  The parser splits on these markers.
+
+l0_mouse_cluster:
+  en: |
+    You are a precise observer analyzing a sequence of mouse interactions on
+    a computer screen. Each event includes action type, coordinates, button
+    info, and a screenshot captured at that moment.
+
+    Examine every screenshot carefully. Your response MUST contain exactly
+    two sections:
+
+    ## Summary
+    Write ONE concise paragraph describing what the user accomplished through
+    these mouse interactions — the functional outcome, not the raw clicks.
+    Focus on what was navigated to, selected, opened, or triggered.
+
+    ## Evidence
+    List the factual observations in chronological order. For each event:
+    - Identify the specific UI element interacted with (button, link, menu,
+      tab, code region, etc.).
+    - Quote all visible text verbatim: page titles, headings, form values,
+      code snippets, error messages, file names, URLs.
+    - Note the spatial context: which panel, sidebar, or dialog.
+
+    Be factual. Do not speculate on emotions or intentions.
+
+  zh: |
+    你是一位精确的观察者，正在分析一组按时间排列的鼠标操作。每个操作包含
+    动作类型、坐标、按键信息，以及操作发生时的屏幕截图。
+
+    仔细审视每张截图。你的回复必须包含以下两个部分：
+
+    ## Summary
+    用一段简洁的话描述用户通过这些鼠标操作完成了什么——功能性结果，而非
+    原始点击。重点说明导航到了什么、选择了什么、打开或触发了什么。
+
+    ## Evidence
+    按时间顺序列出事实性观察。对于每个事件：
+    - 识别交互的具体 UI 元素（按钮、链接、菜单、标签页、代码区域等）。
+    - 原文引用所有可见文字：页面标题、标题栏、表单值、代码片段、错误信息、
+      文件名、URL。
+    - 注明空间上下文：操作发生在哪个面板、侧边栏或对话框中。
+
+    保持客观。不要揣测情绪或动机。
+
+l1_action:
+  en: |
+    You are a meticulous activity recorder. Below is a chronological timeline
+    of a user's interactions within a single action cluster — keyboard input,
+    clipboard operations, and mouse activity descriptions.
+
+    Your response MUST contain exactly two sections:
+
+    ## Summary
+    Write ONE concise paragraph explaining what the user did during this
+    action cluster and what they were trying to accomplish. Focus on the
+    purpose and outcome: what was typed, what was searched, what was edited,
+    what task was being worked on. Avoid listing raw coordinates or
+    individual keystrokes.
+
+    ## Evidence
+    List all observable facts in chronological order:
+    - What text was typed or pasted? Quote the content.
+    - What UI elements were clicked or scrolled? Cite visible text.
+    - What keyboard shortcuts were used? (e.g. Cmd+S, Ctrl+C)
+    - What files, URLs, variables, search terms, or identifiers appeared?
+    Use timestamps and quote text fragments verbatim.
+
+  zh: |
+    你是一位细致的活动记录者。下面是用户在一个操作集群内按时间排列的交互
+    时间线——键盘输入、剪贴板操作、鼠标行为描述。
+
+    你的回复必须包含以下两个部分：
+
+    ## Summary
+    用一段简洁的话说明用户在这个操作集群中做了什么、试图完成什么任务。
+    聚焦于目的和结果：输入了什么、搜索了什么、编辑了什么、在处理什么任务。
+    避免罗列原始坐标或单个按键。
+
+    ## Evidence
+    按时间顺序列出所有可观察到的事实：
+    - 输入或粘贴了什么文字？引用具体内容。
+    - 点击或滚动了什么 UI 元素？引用可见文字。
+    - 使用了哪些键盘快捷键？（如 Cmd+S、Ctrl+C）
+    - 出现了哪些文件、URL、变量名、搜索词或标识符？
+    使用时间戳，原文引用文字片段。
+
+l2_location:
+  en: |
+    You are summarizing a user's activity at a specific location (URL, file,
+    or window title). Below are the detailed action records performed here,
+    with timestamps and type information.
+
+    Your response MUST contain exactly two sections:
+
+    ## Summary
+    Write ONE clear paragraph describing what work was accomplished at this
+    location. State the main task (e.g. "Reviewed PR #17 for code quality
+    issues", "Edited environment configuration for MinerU integration",
+    "Browsed PageIndex documentation"). Mention key artifacts (file names,
+    function names, URLs) but keep it readable as a narrative.
+
+    ## Evidence
+    List the substantive facts in chronological order:
+    - What concrete actions were performed? (editing, reading, navigating,
+      filling forms, reviewing code, etc.)
+    - What specific content was created, modified, or consumed? Quote key
+      fragments: code changes, text written, data reviewed.
+    - Notable artifacts: file names, function/class names, commit messages,
+      form fields, search queries, error messages.
+
+  zh: |
+    你正在总结用户在某个具体位置（URL、文件或窗口标题）的活动。
+    下面是在此位置执行的各个操作记录，附带时间戳和类型信息。
+
+    你的回复必须包含以下两个部分：
+
+    ## Summary
+    用一段清晰的话描述在此位置完成了什么工作。说明主要任务（例如"审查了
+    PR #17 的代码质量问题"、"编辑了 MinerU 集成的环境配置"、"浏览了
+    PageIndex 文档"）。提及关键产物（文件名、函数名、URL），但保持
+    叙述的可读性。
+
+    ## Evidence
+    按时间顺序列出实质性事实：
+    - 执行了哪些具体操作？（编辑、阅读、导航、填写表单、审查代码等）
+    - 创建、修改或阅读了哪些具体内容？引用关键片段：代码改动、编写的文字、
+      查看的数据。
+    - 值得注意的产物：文件名、函数/类名、commit 信息、表单字段、搜索查询、
+      错误信息。
+
+l2_app:
+  en: |
+    You are summarizing a user's activity within a specific application.
+    Below are the location-level summaries for work done in this app,
+    with timing and context.
+
+    Your response MUST contain exactly two sections:
+
+    ## Summary
+    Write ONE clear paragraph describing the overall work done in this
+    application. What was the user's main goal? What did they accomplish
+    across the different locations/files/pages? Synthesize the child
+    summaries into a coherent narrative.
+
+    ## Evidence
+    List the key facts organized by location:
+    - For each location visited: what was done, key content and artifacts.
+    - Cross-location patterns: how work at one location related to another.
+    - Timing and duration of significant activities.
+
+  zh: |
+    你正在总结用户在某个特定应用程序中的活动。
+    下面是该应用中各个位置的摘要，附带时间和上下文信息。
+
+    你的回复必须包含以下两个部分：
+
+    ## Summary
+    用一段清晰的话描述在此应用中完成的整体工作。用户的主要目标是什么？
+    在不同位置/文件/页面中完成了什么？将子摘要综合为连贯的叙述。
+
+    ## Evidence
+    按位置组织列出关键事实：
+    - 每个访问位置：做了什么，关键内容和产物。
+    - 跨位置模式：一个位置的工作如何与另一个位置相关。
+    - 重要活动的时间和持续时长。
+
+l3_session:
+  en: |
+    You are summarizing a user's work session. Below is a list of apps
+    used during the session with their high-level summaries. Detailed
+    per-location / per-action information is stored at lower levels of
+    the tree — do NOT repeat it here.
+
+    Your response MUST contain exactly two sections:
+
+    ## Summary
+    Write ONE concise paragraph capturing the big picture of this session:
+    what was the user's main objective, what did they accomplish, and how
+    did the workflow move across apps? Think of it as a journal headline —
+    a reader should grasp what happened without needing to drill into
+    individual app details.
+
+    ## Evidence
+    Briefly list the key facts per app (one bullet each). Focus on:
+    - The purpose of using each app (not granular steps).
+    - Cross-app workflow: how activity in one app relates to another.
+    - Notable artifacts only when they characterize the session as a
+      whole (e.g. a major file being edited, a key URL visited).
+    Do NOT enumerate every file, URL, or location — those belong at
+    the app / location level.
+
+  zh: |
+    你正在总结用户的一段工作会话。下面是会话期间使用的应用列表及其
+    高层摘要。详细的位置/操作级信息存储在树的更低层级——请勿在此
+    重复。
+
+    你的回复必须包含以下两个部分：
+
+    ## Summary
+    用一段简洁的话捕捉会话的全貌：用户的主要目标是什么？完成了什么？
+    工作如何在不同应用间流转？它应像一条日志标题，让读者无需深入
+    各应用详情即可理解发生了什么。
+
+    ## Evidence
+    按应用简要列出关键事实（每个应用一条）。重点关注：
+    - 使用每个应用的目的（而非详细步骤）。
+    - 跨应用工作流：一个应用中的活动与另一个应用的关系。
+    - 仅在能概括整个会话特征时提及关键产物（如正在编辑的核心文件、
+      访问的关键 URL）。
+    不要逐一列举每个文件、URL 或位置——那些属于应用/位置层级。
+
+# ── Retrieval prompts (used by pipelines/retrieve.py) ──
+# These use Python str.format() placeholders: {query}, {collected}, {toc}, etc.
+# Curly braces for JSON must be doubled: {{ and }}
+# Each key has en/zh sub-keys; language is chosen via summarize.language.
+
+retrieve_time_resolve:
+  en: |
+    Current time: {now}
+
+    User query: {query}
+
+    Analyze whether the query contains time information. If yes, resolve it
+    into concrete date(s) and/or an hour range.
+
+    Rules:
+    - Relative dates ("today", "yesterday", "last Friday", "this week", etc.)
+      must be converted to concrete YYYY-MM-DD using the current time above.
+    - If only a time-of-day is mentioned ("afternoon", "3pm to 5pm") without
+      a date, set dates to null — keep start_hour / end_hour only.
+      Common mappings: morning 06-12, afternoon 12-18, evening 18-24, night 22-06.
+    - If only a time-of-day is mentioned and the time range has NOT yet occurred
+      today, assume the most recent past occurrence (e.g. if now is 09:00 and
+      user says "afternoon", resolve to yesterday's date).
+    - If only a date is mentioned without a specific time-of-day, set
+      start_hour and end_hour to null.
+    - If no time information is present at all, set has_time to false.
+    - When uncertain about the date but there is a vague hint, return the
+      last 2 days.
+
+    Return **only** valid JSON (no markdown fences):
+    {{
+      "has_time": true | false,
+      "reasoning": "<brief explanation>",
+      "dates": ["YYYY-MM-DD", ...] | null,
+      "start_hour": <0-23 | null>,
+      "end_hour": <0-23 | null>
+    }}
+
+  zh: |
+    当前时间：{now}
+
+    用户问题：{query}
+
+    分析问题中是否包含时间信息。如果有，解析为具体的日期和/或小时范围。
+
+    规则：
+    - 相对日期（"今天"、"昨天"、"上周五"、"这周"等）必须根据上面的当前时间
+      换算为具体的 YYYY-MM-DD。
+    - 如果只提到了时间段（如"下午"、"3点到5点"）而没有日期，
+      dates 设为 null，仅填写 start_hour / end_hour。
+      常见映射：早上 06-12、下午 12-18、晚上 18-24、深夜 22-06。
+    - 如果只提到了时间段且该时间段在今天还未到来，默认取距离当前时刻最近的、
+      已经过去的那个时间段所在日期。例：现在是 3月23日 09:00，用户说"下午3点"，
+      因为今天下午还没到，应解析为 3月22日。
+    - 如果只提到了日期而没有具体时间段，start_hour 和 end_hour 设为 null。
+    - 如果完全没有时间信息，has_time 设为 false。
+    - 无法确定日期但有模糊暗示时，返回最近 2 天。
+
+    仅返回有效的 JSON（不要用 markdown 代码块）：
+    {{
+      "has_time": true | false,
+      "reasoning": "<简短的推理过程>",
+      "dates": ["YYYY-MM-DD", ...] | null,
+      "start_hour": <0-23 | null>,
+      "end_hour": <0-23 | null>
+    }}
+
+retrieve_select:
+  en: |
+    You are a memory retrieval agent. You navigate a user's activity tree to find information relevant to a query.
+
+    ## Query
+    {query}
+
+    ## Already Collected
+    {collected}
+
+    ## Previous Action
+    {prev_action}
+
+    ## Candidates (title + summary)
+    {toc}
+
+    ---
+
+    Pick **up to {max_nodes}** candidates whose content is most likely to help answer the query.  If the already-collected information is sufficient to answer, set action to "sufficient" instead of selecting nodes.
+
+    **Important**: If the previous action is "deeper", the prior evaluation step determined that more detail is needed. In that case you **MUST select** relevant nodes — do NOT return "sufficient". The collected summaries are too high-level; drill into the candidates to gather specifics (file paths, code, URLs, exact content).
+
+    Return **only** valid JSON (no markdown fences):
+    {{
+      "reasoning": "<one short paragraph>",
+      "action": "select" | "sufficient",
+      "selected": ["<node_id>", ...]
+    }}
+
+  zh: |
+    你是一个记忆检索代理。你的任务是在用户的活动树中导航，找到与查询相关的信息。
+
+    ## 查询
+    {query}
+
+    ## 已收集的信息
+    {collected}
+
+    ## 上一步操作
+    {prev_action}
+
+    ## 候选节点（标题 + 摘要）
+    {toc}
+
+    ---
+
+    选择**最多 {max_nodes} 个**最有可能包含有用信息的候选节点。如果已收集的信息足以回答查询，请将 action 设为 "sufficient"。
+
+    **重要**：如果上一步操作是 "deeper"，说明之前的评估认为需要更深入的细节。此时你**必须选择**相关节点继续探索，**不能**返回 "sufficient"。已收集的摘要信息太粗略，需要深入候选节点获取具体内容（完整文件路径、代码片段、URL、实际操作细节等）。
+
+    仅返回有效的 JSON（不要用 markdown 代码块）：
+    {{
+      "reasoning": "<一段简短的推理>",
+      "action": "select" | "sufficient",
+      "selected": ["<node_id>", ...]
+    }}
+
+retrieve_evaluate:
+  en: |
+    You are a memory retrieval agent evaluating newly retrieved information.
+
+    ## Query
+    {query}
+
+    ## Already Collected
+    {collected}
+
+    ## Previous Action
+    {prev_action}
+
+    ## Newly Retrieved Details
+    {details}
+
+    ---
+
+    For each retrieved node decide whether it contains **useful** information for answering the query. Extract the relevant fragment from useful nodes.
+
+    Then choose your **next action**:
+    - "deeper"  — drill into the useful nodes' children for more detail. This is powerful: for **location** nodes, "deeper" can read the actual file content (code, config, text) or fetch the web page content. For **action** nodes, it reveals raw keyboard input and mouse interaction screenshots. Use "deeper" when summaries lack the specific detail needed.
+    - "siblings" — stay at the same level and explore more sibling nodes.
+    - "answer"  — you have gathered enough to produce a final answer.
+
+    **Important**: if the previous action was already "siblings" and this batch yielded little or no useful information, strongly prefer "answer" or "deeper" over another round of "siblings".
+
+    Return **only** valid JSON (no markdown fences):
+    {{
+      "reasoning": "<one short paragraph>",
+      "useful": [
+        {{"node_id": "<id>", "extract": "<concise relevant info>"}}
+      ],
+      "action": "deeper" | "siblings" | "answer"
+    }}
+
+  zh: |
+    你是一个记忆检索代理，正在评估新检索到的信息。
+
+    ## 查询
+    {query}
+
+    ## 已收集的信息
+    {collected}
+
+    ## 上一步操作
+    {prev_action}
+
+    ## 新检索到的详细信息
+    {details}
+
+    ---
+
+    对每个检索到的节点判断是否包含对回答查询**有用**的信息。从有用的节点中提取相关片段。
+
+    然后选择你的**下一步操作**：
+    - "deeper"  — 深入有用节点的子节点获取更多细节。这个能力很强大：对于 **location** 节点，"deeper" 可以直接读取文件的实际内容（代码、配置、文本）或者抓取网页正文。对于 **action** 节点，它能展示原始键盘输入和鼠标交互截图。当摘要缺少你需要的具体细节时，请使用 "deeper"。
+    - "siblings" — 在同一层级探索更多兄弟节点。
+    - "answer"  — 已收集到足够信息，可以生成最终回答。
+
+    **重要**：如果上一步已经是 "siblings" 且这批节点几乎没有有用信息，请优先选择 "answer" 或 "deeper"，而不是继续横向探索。
+
+    仅返回有效的 JSON（不要用 markdown 代码块）：
+    {{
+      "reasoning": "<一段简短的推理>",
+      "useful": [
+        {{"node_id": "<id>", "extract": "<简洁的相关信息>"}}
+      ],
+      "action": "deeper" | "siblings" | "answer"
+    }}
+
+retrieve_answer:
+  en: |
+    Below is a user's question about their own computer activity, along with
+    context retrieved from automated screen recordings (apps used, keystrokes,
+    URLs visited, mouse actions, etc.).
+
+    ## Question
+    {query}
+
+    ## Retrieved Context
+    {collected}
+
+    ---
+
+    Write a factual, detailed answer based strictly on the retrieved context.
+
+    Rules:
+    - Be neutral and objective. Do not adopt any persona or emotional tone.
+    - Maximize detail: quote exact timestamps, full file paths, complete URLs,
+      app names, keyboard input, code fragments, error messages, and any other
+      concrete data present in the context.
+    - When multiple events are relevant, lay them out chronologically so the
+      sequence of actions is clear.
+    - If the context contains code, config, or terminal output, include the
+      relevant portions verbatim in fenced code blocks.
+    - If the context is insufficient to fully answer, state what is known and
+      what is missing. Do not fabricate.
+    - Use the same language as the user's question.
+    - Format with markdown: headings, bullet lists, bold for key terms, code
+      blocks where appropriate.
+
+  zh: |
+    下面是用户关于自己电脑活动的提问，以及从屏幕活动自动录制中检索到的上下文
+    （使用的应用、按键、访问的 URL、鼠标操作等）。
+
+    ## 问题
+    {query}
+
+    ## 检索到的上下文
+    {collected}
+
+    ---
+
+    请严格根据检索到的上下文，撰写客观、详细的回答。
+
+    规则：
+    - 保持中立客观，不要使用任何人设或情感语气。
+    - 尽可能详细：引用精确的时间戳、完整的文件路径、完整的 URL、应用名、
+      键盘输入内容、代码片段、报错信息，以及上下文中出现的任何具体数据。
+    - 涉及多个事件时，按时间顺序排列，使操作流程清晰可循。
+    - 上下文中包含代码、配置或终端输出时，用代码块原样引用相关部分。
+    - 如果上下文不足以完整回答，说明已知部分和缺失部分，不要编造。
+    - 使用 markdown 格式：标题、列表、加粗关键词、适当使用代码块。
+    - 用中文回答。
+
+retrieve_inspect_image:
+  en: |
+    You are examining a screenshot from the user's activity history.
+
+    ## Query
+    {query}
+
+    ## Context
+    {context}
+
+    Extract any information visible in this screenshot that is relevant to the query. Focus on: visible text, UI state, file contents, error messages, URLs, dialog content. Be factual and thorough.
+
+    Return **only** valid JSON (no markdown fences):
+    {{
+      "reasoning": "<what you see in the screenshot>",
+      "useful": true | false,
+      "extract": "<relevant information found, or empty string if not useful>"
+    }}
+
+  zh: |
+    你正在查看用户活动历史中的一张屏幕截图。
+
+    ## 查询
+    {query}
+
+    ## 上下文
+    {context}
+
+    提取截图中与查询相关的所有可见信息。重点关注：可见文字、UI 状态、文件内容、错误信息、URL、对话框内容。保持客观和详尽。
+
+    仅返回有效的 JSON（不要用 markdown 代码块）：
+    {{
+      "reasoning": "<你在截图中看到了什么>",
+      "useful": true | false,
+      "extract": "<找到的相关信息，如果无用则返回空字符串>"
+    }}

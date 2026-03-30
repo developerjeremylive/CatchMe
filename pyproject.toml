@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "catchme"
+version = "0.1.0"
+description = "Always-on personal digital footprint recorder with hierarchical memory and LLM-powered retrieval"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+dependencies = [
+    # Web viewer
+    "flask>=3.0",
+    # Config
+    "pyyaml>=6.0",
+    # LLM client
+    "openai>=1.0",
+    # Screen capture
+    "mss>=9.0",
+    "Pillow>=10.0",
+    "numpy>=1.24",
+    "imagehash>=4.3",
+    # Input recorders
+    "pynput>=1.7",
+    # System info
+    "psutil>=5.9",
+    # Pipelines
+    "pymupdf>=1.24",
+    "websockets>=12.0",
+    "trafilatura>=1.8",
+    "requests>=2.31",
+    # macOS native APIs
+    "pyobjc-framework-Cocoa>=10.0; sys_platform == 'darwin'",
+    "pyobjc-framework-Quartz>=10.0; sys_platform == 'darwin'",
+    "pyobjc-framework-ScreenCaptureKit>=10.0; sys_platform == 'darwin'",
+    "pyobjc-framework-CoreMedia>=10.0; sys_platform == 'darwin'",
+    # Windows native APIs
+    "pywin32>=306; sys_platform == 'win32'",
+    "comtypes>=1.4; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+catchme = "catchme.run:main"
+
+[tool.pytest.ini_options]
+testpaths = ["catchme/tests"]
+addopts = "-q --tb=short"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "E402",   # module-level import not at top (sometimes intentional)
+    "SIM105", # contextlib.suppress vs try-except-pass (project preference)
+    "SIM108", # ternary operator
+    "B010",   # setattr with constant
+    "UP007",  # X | Y union syntax (keep Optional for clarity)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["catchme"]
+
+[tool.setuptools.packages.find]
+include = ["catchme*"]

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CatchMe — The Missing Layer of Personal Agent</title>
+  <link rel="icon" type="image/png" href="catchme_icon.png" />
+  <meta name="description" content="CatchMe: an always-on personal memory layer that captures your digital footprint and lets AI agents truly understand you." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Theme tokens ────────────────────────────────────── */
+    :root {
+      --c-bg: #faf9f7;
+      --c-surface: #ffffff;
+      --c-text: #1a1a1a;
+      --c-text-2: #444;
+      --c-text-3: #777;
+      --c-accent: #c0654a;
+      --c-accent-hover: #a8523a;
+      --c-accent-bg: #fdf5f1;
+      --c-border: #e5e0da;
+      --c-code-bg: #f3efea;
+      --c-diagram-bg: #ffffff;
+      --c-diagram-border: #e5e0da;
+      --c-nav-bg: rgba(250,249,247,.9);
+      --font-display: 'DM Serif Display', 'Georgia', serif;
+      --font-body: 'Source Serif 4', 'Georgia', serif;
+      --font-ui: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+      --max-w: 860px;
+      --radius: 8px;
+    }
+    [data-theme="dark"] {
+      --c-bg: #141414;
+      --c-surface: #1e1e1e;
+      --c-text: #e0ddd8;
+      --c-text-2: #b0aca5;
+      --c-text-3: #807b74;
+      --c-accent: #d4845f;
+      --c-accent-hover: #e0976f;
+      --c-accent-bg: #2a1f18;
+      --c-border: #2e2c29;
+      --c-code-bg: #252320;
+      --c-diagram-bg: #1e1e1e;
+      --c-diagram-border: #333;
+      --c-nav-bg: rgba(20,20,20,.9);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--c-text);
+      background: var(--c-bg);
+      -webkit-font-smoothing: antialiased;
+      transition: background .3s, color .3s;
+    }
+
+    /* ── Nav ──────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--c-nav-bg);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--c-border);
+      transition: background .3s, border-color .3s;
+    }
+    nav .inner {
+      max-width: 960px; margin: 0 auto;
+      padding: 6px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav .logo { display: flex; align-items: center; text-decoration: none; }
+    nav .logo img { height: 40px; }
+    nav .actions { display: flex; align-items: center; gap: 20px; }
+    nav .actions a {
+      color: var(--c-text-2); text-decoration: none;
+      font-family: var(--font-ui); font-size: 14px; font-weight: 500;
+      transition: color .2s;
+    }
+    nav .actions a:hover { color: var(--c-accent); }
+    nav .actions a svg { vertical-align: -3px; }
+    #theme-toggle {
+      background: none; border: none; cursor: pointer;
+      color: var(--c-text-2); padding: 4px;
+      display: flex; align-items: center; justify-content: center;
+      transition: color .2s;
+    }
+    #theme-toggle:hover { color: var(--c-accent); }
+
+    /* ── Article ──────────────────────────────────────── */
+    article { max-width: var(--max-w); margin: 0 auto; padding: 56px 24px 24px; }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero { text-align: center; margin-bottom: 64px; }
+    .hero h1 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 2.6em; line-height: 1.22; letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: var(--c-text);
+    }
+    .hero h1 .title-brand {
+      font-style: italic;
+    }
+    .hero .date {
+      font-family: var(--font-ui); font-size: 15px;
+      color: var(--c-text-3); margin-bottom: 16px;
+    }
+    .hero .authors {
+      font-family: var(--font-ui); font-size: 15px;
+      color: var(--c-text-2);
+      display: flex; justify-content: center; gap: 40px;
+    }
+    .hero .affiliation {
+      font-family: var(--font-body); font-style: italic;
+      font-size: 15px; color: var(--c-text-3);
+      margin-top: 10px; margin-bottom: 0;
+    }
+
+    /* ── Typography ───────────────────────────────────── */
+    h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 1.75em; line-height: 1.3;
+      margin: 48px 0 18px;
+      color: var(--c-text);
+    }
+    h3 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 1.3em; line-height: 1.35;
+      margin: 32px 0 12px;
+      color: var(--c-text);
+    }
+    p { margin-bottom: 20px; color: var(--c-text-2); }
+    strong { color: var(--c-text); font-weight: 600; }
+    em { font-style: italic; }
+    a { color: var(--c-accent); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--c-accent-hover); }
+    ul, ol { margin: 0 0 24px 24px; color: var(--c-text-2); }
+    li { margin-bottom: 8px; }
+    li::marker { color: var(--c-accent); }
+
+    /* ── Separator ────────────────────────────────────── */
+    hr { border: none; height: 1px; background: var(--c-border); margin: 40px 0; transition: background .3s; }
+
+    /* ── Callout ──────────────────────────────────────── */
+    .callout {
+      background: var(--c-accent-bg);
+      border-left: 3px solid var(--c-accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 24px; margin: 28px 0;
+      transition: background .3s, border-color .3s;
+    }
+    .callout p { margin-bottom: 0; font-size: 0.95em; }
+
+    /* ── Diagram container ────────────────────────────── */
+    .diagram-wrap {
+      background: var(--c-diagram-bg);
+      border: 1px solid var(--c-diagram-border);
+      border-radius: var(--radius);
+      padding: 18px 12px;
+      margin: 32px 0;
+      overflow-x: auto;
+      text-align: center;
+      transition: background .3s, border-color .3s;
+    }
+    .diagram-wrap svg, .diagram-wrap img, .diagram-wrap object { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    .diagram-caption {
+      text-align: center;
+      font-family: var(--font-body); font-size: 14px;
+      font-style: italic;
+      color: var(--c-text-3); margin-top: 14px; margin-bottom: 28px;
+    }
+
+    /* dark mode SVG text */
+    [data-theme="dark"] .diagram-wrap .svg-text { fill: #e0ddd8; }
+    [data-theme="dark"] .diagram-wrap .svg-text-2 { fill: #b0aca5; }
+    [data-theme="dark"] .diagram-wrap .svg-line { stroke: #555; }
+    [data-theme="dark"] .diagram-wrap .svg-box { stroke: #444; fill: #252320; }
+    [data-theme="dark"] .diagram-wrap .svg-box-accent { fill: #2a1f18; stroke: #d4845f; }
+
+    /* ── Code ─────────────────────────────────────────── */
+    code {
+      font-family: var(--font-mono); font-size: 0.85em;
+      background: var(--c-code-bg); padding: 2px 6px; border-radius: 4px;
+      transition: background .3s;
+    }
+
+    /* ── Table ────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; margin: 28px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+    th {
+      text-align: left; font-weight: 600; padding: 10px 14px;
+      background: var(--c-code-bg); border-bottom: 2px solid var(--c-border);
+      font-family: var(--font-ui); font-size: 0.88em;
+      color: var(--c-text); transition: background .3s;
+    }
+    td {
+      padding: 10px 14px; border-bottom: 1px solid var(--c-border);
+      vertical-align: top; color: var(--c-text-2); transition: border-color .3s;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      text-align: center; padding: 10px 24px 12px;
+      font-family: var(--font-ui); font-size: 14px;
+      color: var(--c-text-3); border-top: 1px solid var(--c-border);
+      transition: border-color .3s;
+      max-height: 80px; overflow: hidden;
+    }
+    footer p { margin-bottom: 4px; }
+
+    /* ── References (academic) ────────────────────────── */
+    .ref-list-acad {
+      list-style: none; margin-left: 0;
+      counter-reset: ref-counter;
+    }
+    .ref-list-acad li {
+      counter-increment: ref-counter;
+      padding: 6px 0 6px 36px;
+      position: relative;
+      font-size: 0.82em;
+      color: var(--c-text-2);
+      line-height: 1.65;
+    }
+    .ref-list-acad li + li {
+      border-top: 1px solid var(--c-border);
+      transition: border-color .3s;
+    }
+    .ref-list-acad li::before {
+      content: "[" counter(ref-counter) "]";
+      position: absolute; left: 0; top: 6px;
+      font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+      color: var(--c-text-3);
+    }
+    .ref-list-acad em { font-style: italic; }
+
+    /* ── Table of Contents (sidebar) ─────────────────── */
+    .toc { display: none; }
+    @media (min-width: 1320px) {
+      .toc {
+        display: block; position: fixed;
+        top: 50%; left: calc(50% + 460px);
+        transform: translateY(-50%);
+        width: 196px;
+        max-height: calc(100vh - 160px);
+        overflow-y: auto;
+        z-index: 50;
+        padding: 24px 0;
+        border-left: 1px solid var(--c-border);
+      }
+      .toc::-webkit-scrollbar { width: 0; }
+      .toc-title {
+        font-family: var(--font-ui);
+        font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--c-accent); margin-bottom: 20px;
+        padding-left: 20px; opacity: 0.7;
+      }
+      .toc a {
+        display: block; text-decoration: none;
+        margin-left: -1px;
+        border-left: 2px solid transparent;
+        transition: color .25s, border-color .25s;
+      }
+      .toc a.toc-h2 {
+        font-family: var(--font-body);
+        font-size: 13.5px; line-height: 1.5;
+        color: var(--c-text-2);
+        padding: 5px 12px 5px 18px;
+        margin-top: 16px;
+      }
+      .toc a.toc-h2:first-of-type { margin-top: 0; }
+      .toc a.toc-h3 {
+        font-family: var(--font-ui);
+        font-size: 11.5px; line-height: 1.45;
+        color: var(--c-text-3);
+        padding: 2px 12px 2px 18px;
+        opacity: 0.6;
+      }
+      .toc a:hover { color: var(--c-accent); opacity: 1; }
+      .toc a.active {
+        color: var(--c-accent);
+        border-left-color: var(--c-accent);
+      }
+      .toc a.active.toc-h2 { font-weight: 600; }
+      .toc a.active.toc-h3 { opacity: 1; }
+    }
+
+    /* ── Closing highlight ───────────────────────────── */
+    .closing-line {
+      text-align: center;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 1.1em;
+      color: var(--c-accent);
+      margin: 48px 0 20px;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8em; }
+      h2 { font-size: 1.45em; }
+      article { padding: 36px 16px 80px; }
+      .hero .authors { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="logo" href="#">
+      <img src="catchme_logo.png" alt="CatchMe" />
+    </a>
+    <div class="actions">
+      <a href="https://github.com/HKUDS/CatchMe" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        &nbsp;GitHub
+      </a>
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<aside class="toc" id="toc"></aside>
+
+<article>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero">
+  <h1><span class="title-brand">CatchMe:</span> The Missing Layer<br/>of Personal Agent</h1>
+  <p class="date">March 2026</p>
+  <div class="authors">
+    <span>Bingxi Zhao</span>
+    <span>Chao Huang</span>
+  </div>
+  <p class="affiliation">Data Intelligence Lab, The University of Hong Kong</p>
+</section>
+
+<!-- ════════════ INTRODUCTION ════════════ -->
+
+<p>
+AI agents are growing remarkably capable. They write code, orchestrate workflows, browse the web, and manage files, all through increasingly powerful tool-use and skill-composition frameworks. Yet amid this rapid progress, a fundamental gap remains: <strong>agents know almost nothing about the person they serve.</strong>
+</p>
+<p>
+An agent can call a hundred APIs, but it cannot answer <em>"What was I working on before lunch?"</em> or <em>"When did I last read that arxiv paper?"</em>; it simply has no memory of the user's daily digital life. Skills, tools, and harness architectures can augment <em>what</em> an agent does; but understanding <em>who</em> it works for requires something these systems cannot provide: knowledge of the user's habits, context, and unspoken intent.
+</p>
+<p>
+We argue that <strong>personal memory is the missing infrastructure layer</strong> for truly adaptive AI agents. Without it, agents adapt to tasks; with it, agents adapt to people.
+</p>
+
+<hr />
+
+<!-- ════════════ LIMITATIONS ════════════ -->
+<h2>The Gap in Current Memory Systems</h2>
+
+<h3>Agents Operate in CLI; Users Live in GUI</h3>
+<p>
+The resurgence of CLI-based agent interaction is quietly reshaping the boundary between human and machine. As agents increasingly operate through terminal commands, code execution, and API calls, the graphical interface is no longer a shared workspace; it is becoming <em>exclusively the user's domain</em>. The tabs you browse, the documents you read, the paragraphs you highlight — this is context that no agent can observe through its own tool-use. And yet it is precisely this context that determines what the user cares about, what they are working on, and what they need help with. Personal GUI activity is, in a real sense, the last mile of information that agents cannot reach on their own.
+</p>
+
+<h3>Statistics Without Semantics</h3>
+<p>
+One family of existing approaches focuses on logging which applications you use and for how long. These systems produce useful time-tracking dashboards, but they capture no <em>meaning</em>. You can see that you spent three hours in your code editor — but not what you were editing, why you switched to the browser, or what you found there. The data is flat, aggregated, and disconnected from the semantic fabric of your day. It tells you <em>where</em> your time went, but not <em>what happened</em>.
+</p>
+
+<h3>Data Without Structure</h3>
+<p>
+Another family goes to the opposite extreme: continuous screen recording that captures everything on screen, then relies on vector-based retrieval, embedding OCR'd frames or text chunks and matching them against queries by similarity. This approach inherits fundamental limitations: semantic similarity is not the same as relevance; fixed-size chunking breaks contextual integrity; and the infrastructure cost of continuous recording, embedding, and indexing is substantial. You get a haystack of data, but the needle-finding mechanism is blunt.
+</p>
+
+<h3>The Flat-Stream Assumption</h3>
+<p>
+Beneath these differences, both paradigms share a deeper structural deficit: they treat the user's digital activity as a <strong>flat stream</strong>: a chronological sequence of events or frames with no inherent organization. But human computer use is not flat. It has sessions that begin and end, tasks that nest within tasks, focus shifts that carry meaning, and a natural hierarchy of applications, windows, and actions. When you switch from reading a paper to checking Slack and then return, that <em>return</em> carries context — context that a flat log discards entirely. A meaningful memory system should preserve this structure, not flatten it away.
+</p>
+
+<div class="callout">
+<p>
+<strong>Our thesis:</strong> personal memory needs <em>structure</em>, not <em>similarity</em>. Instead of embedding everything into a vector space, we organize raw events into a navigable hierarchy that an LLM can reason over, much like a reader skims a table of contents before diving into the relevant chapter.
+</p>
+</div>
+
+<hr />
+
+<!-- ════════════ OUR DESIGN ════════════ -->
+<h2>CatchMe: Design Overview</h2>
+
+<p>
+CatchMe is an always-on, fully local memory system that runs quietly in the background, captures what you see and do, and organizes everything into a <strong>hierarchical activity tree</strong> that both humans and AI agents can query in natural language. The design rests on three pillars.
+</p>
+
+<!-- ── Pillar 1: Memory Tree ──────────────────────── -->
+<h3>A Living Activity Tree</h3>
+
+<p>
+Rather than logging events as a flat sequence, CatchMe structures your day into a five-level tree (<strong>Day → Session → App → Location → Action</strong>) that mirrors the natural rhythm of how people use computers. Sessions are split by idle gaps; within each session, activity is grouped by application, then by the specific tab, file, or window you were focused on, and finally by the individual actions (typing, clicking, scrolling) you performed there.
+</p>
+<p>
+The tree's structural hierarchy is built by deterministic rules (window switches, idle timeouts, temporal clustering) with no LLM involved in deciding <em>where</em> a node belongs. But the <em>content</em> of each node is not raw event data: as events accumulate within a node, an LLM summarizes them into concise natural-language descriptions. These summaries propagate bottom-up: actions are summarized first, then parent locations, then sessions, so that every level of the tree carries semantically meaningful information, not just structural labels.
+</p>
+<p>
+Crucially, this entire process is <strong>live and incremental</strong>. The tree does not get rebuilt from scratch at the end of the day. As you work, new events continuously flow in; the organizer extends the current session or opens a new one in real time; and once a node is "closed" (e.g., you switched away from an app), it is immediately enqueued for LLM summarization. The tree is always growing, always being enriched, a living document of your day that stays current minute by minute.
+</p>
+
+<!-- Live tree growth diagram -->
+<div class="diagram-wrap">
+  <object type="image/svg+xml" data="fig1_activity_tree.svg">Activity tree snapshot</object>
+</div>
+<p class="diagram-caption">Fig 1. A snapshot of the activity tree. Gray nodes are completed and summarized; the orange dashed branch is the currently active session, growing as new events arrive.</p>
+
+<!-- ── Pillar 2: Tree-Based Retrieval ────────────── -->
+<h3>Tree Reasoning for Fragmented Personal Data</h3>
+
+<p>
+Personal activity data is inherently fragmented (short bursts of typing, scattered clicks, fleeting tab switches) and buried in noise. Embedding-based retrieval struggles here: the chunks are too small and too heterogeneous to produce meaningful similarity signals. A keystroke sequence and the screenshot it relates to live in entirely different modalities; a 3-second glance at Slack has no semantic overlap with the deep-work session it interrupted.
+</p>
+<p>
+CatchMe takes a different path: <strong>LLM-based reasoning over the tree structure</strong>. The hierarchy gives the LLM a reliable navigation scaffold, showing it which day, which session, which app to look in, while the LLM's reasoning filters out irrelevant noise within each branch, extracting only the details that matter. The tree ensures the search direction is right; the LLM ensures the signal-to-noise ratio is high.
+</p>
+<p>
+This is a test-time approach: there is no pre-built knowledge graph or embedding index. The LLM reasons on demand, scoping by time, browsing the tree's table of contents, drilling into promising branches, and inspecting raw evidence (text or screenshots via vision) only when needed. If the context is insufficient, it iterates. This makes the system robust to the messiness of real-world activity data in a way that static retrieval cannot match.
+</p>
+<p>
+Critically, the LLM is not limited to a single path through the tree. At every level (days, sessions, apps, locations) it can <strong>select multiple nodes simultaneously</strong>. When it reaches a Location, the system can read the file content directly from disk and inspect underlying action evidence: keystrokes, mouse events, and screenshots via vision. This multi-branch, multi-level traversal enables <strong>cross-temporal retrieval</strong>: evidence scattered across different days and different applications is collected in a single reasoning pass and synthesized into one coherent answer.
+</p>
+
+<!-- Retrieval reasoning diagram -->
+<div class="diagram-wrap">
+  <object type="image/svg+xml" data="fig2_retrieval.svg">Retrieval walkthrough</object>
+</div>
+<p class="diagram-caption">Fig 2. Retrieval walkthrough for <em>"What did I change in retrieve.py this week?"</em> The LLM scopes to relevant days (steps 1–2), drills to matching Cursor locations (3–4), and inspects file content and action evidence across two days to produce a single answer (5).</p>
+
+<!-- ── Pillar 3: Agent-Native ────────────────────── -->
+<h3>Plugging into the Agent Ecosystem</h3>
+
+<p>
+Modern agent frameworks are rich with capabilities. Tools let agents execute shell commands, browse the web, and manipulate files. Skills package reusable workflows: code generation, search, browser automation. Knowledge bases provide RAG over documents, embeddings, and conversation history. Together, these give an agent a powerful repertoire of <em>what it can do</em> and <em>what it can know</em>.
+</p>
+<p>
+But there is a category of context that none of these provide: <strong>who the agent is working for</strong>. No tool can tell the agent what you were reading ten minutes ago. No skill can retrieve which files you had open this morning. No knowledge base contains the fleeting Slack message you glanced at before switching to your editor. This personal, real-time, GUI-level context — the texture of your actual digital life — is invisible to every standard agent capability.
+</p>
+<p>
+CatchMe fills this gap. It is an <strong>agent-native CLI tool</strong> designed to plug directly into any framework (Cursor, Claude Code, OpenClaw, or any other harness). The integration surface is a single command that any agent can invoke as a skill. When a user sends a request, the agent calls CatchMe to retrieve personal context — what the user was doing, reading, and writing — and folds that understanding into its reasoning. The agent doesn't need to understand trees or retrieval pipelines; it asks a question in natural language and gets a grounded answer.
+</p>
+<p>
+Wherever there are people, there is GUI interaction; and wherever there is GUI interaction, there is personal context waiting to be understood. By fitting into the agent loop as a lightweight plugin, CatchMe makes it possible for <strong>any workflow, any application, any agent</strong> to draw on that context — transforming agents that adapt to tasks into agents that adapt to <em>people</em>.
+</p>
+
+<!-- Agent ecosystem diagram -->
+<div class="diagram-wrap">
+  <object type="image/svg+xml" data="fig3_agent_stack.svg">Agent stack diagram</object>
+</div>
+<p class="diagram-caption">Fig 3. CatchMe in the agent stack. Existing capabilities (tools, skills, knowledge) sit inside the framework; CatchMe sits below, passively capturing GUI activity and feeding personal context upward via a single CLI call.</p>
+
+<hr />
+
+<!-- ════════════ OVERCOMING LIMITATIONS ════════════ -->
+<h2>Bridging the Gap</h2>
+
+<h3>Mouse-Event-Driven Screenshots</h3>
+<p>
+Continuous screen recording is expensive and generates enormous amounts of redundant data. CatchMe takes a different approach: <strong>screenshots are triggered by user actions</strong>. Every mouse click captures a full-screen image annotated with a crosshair, and every scroll session captures start and end frames. Each screenshot is stored as a full-screen overview and a zoomed detail crop around the action point. This makes every captured frame <em>meaningful</em>: it corresponds to a moment the user actively engaged with the screen, not an idle background frame.
+</p>
+
+<h3>Time-Interval Clustering for Noise Reduction</h3>
+<p>
+Raw events (individual keystrokes, mouse movements, clipboard changes) are noisy and voluminous. CatchMe clusters them into coherent action units based on <strong>temporal proximity</strong>: events that occur close together within the same location are grouped into a single Action node. LLM summarization operates on these clusters as the minimal unit, not on individual events. This dramatically reduces both noise and cost: the system summarizes meaningful activity chunks, not raw keystroke logs.
+</p>
+
+<h3>Preserving GUI Semantics in Tree Structure</h3>
+<p>
+The tree hierarchy naturally encodes relationships that flat event streams lose: which application was being used, within which file or URL, during which work session. The App → Location → Action nesting captures the <em>topology</em> of GUI use (the fact that you had three tabs open in Chrome, were editing two files in Cursor, and briefly checked Slack in between) as first-class structural information, not metadata to be reconstructed at query time.
+</p>
+
+<h3>Brief Capture for Transient Context Switches</h3>
+<p>
+Users frequently switch away from their primary window for a few seconds: checking a notification, glancing at a reference, copying a value. CatchMe's organizer detects these short-lived focus events and records them as <strong>briefs</strong> attached to the parent window span, rather than promoting them to full tree nodes. This preserves the relationship between a fleeting glance and the main task without polluting the tree structure with noise.
+</p>
+
+<h3>Rule-Based Time Filtering</h3>
+<p>
+Before any LLM call, the retrieval pipeline applies deterministic time-range filtering: temporal cues in the query ("this morning", "last Tuesday afternoon") are parsed and used to prune the tree down to only the relevant day and session nodes. This rule-based first pass eliminates the majority of the search space at zero cost, ensuring that the more expensive LLM reasoning operates on a tightly scoped context.
+</p>
+
+<h3>Test-Time Reasoning Over Pre-Built Indices</h3>
+<p>
+Unlike systems that construct a knowledge graph or embedding index at ingestion time, CatchMe defers all semantic reasoning to <strong>query time</strong>. The tree is structural scaffolding; meaning is extracted on demand by the LLM navigating it. This has a practical advantage: there is no stale index to maintain, no re-embedding when the model improves, and no upfront cost proportional to data volume. The system scales with query count, not data size.
+</p>
+
+<hr />
+
+<!-- ════════════ CONCLUSION ════════════ -->
+<h2>Conclusion</h2>
+
+<p>
+The next generation of personal AI agents will be defined not by what tools they can use, but by <strong>how well they understand the person using them</strong>. CatchMe contributes to this vision by providing an always-on, lightweight, fully local memory layer that captures the user's digital footprint and organizes it into a structure that LLMs can reason over.
+</p>
+<p>
+The core insight is that personal memory is a navigation problem, not a search problem. By structuring activity into a hierarchical tree and using LLM-based reasoning to traverse it, CatchMe achieves grounded, context-aware retrieval without vector databases, embedding pipelines, or pre-built knowledge graphs — all in ~200 MB of RAM, running entirely on the user's machine.
+</p>
+<p class="closing-line">
+Your computer should remember everything. Now it can.
+</p>
+
+<hr />
+
+<!-- ════════════ REFERENCES ════════════ -->
+<h2>References</h2>
+
+<ol class="ref-list-acad">
+  <li>HKUDS, <em>"LightRAG: Simple and Fast Retrieval-Augmented Generation,"</em> 2024. <a href="https://github.com/HKUDS/LightRAG">github.com/HKUDS/LightRAG</a></li>
+  <li>VectifyAI, <em>"PageIndex: Vectorless, Reasoning-based RAG,"</em> 2025. <a href="https://github.com/VectifyAI/PageIndex">github.com/VectifyAI/PageIndex</a></li>
+  <li>Alibaba, <em>"PageAgent: In-page GUI Agent for Web Interfaces,"</em> 2025. <a href="https://github.com/alibaba/page-agent">github.com/alibaba/page-agent</a></li>
+  <li>Volcengine, <em>"MineContext: Proactive Context-Aware AI Partner,"</em> 2025. <a href="https://github.com/volcengine/MineContext">github.com/volcengine/MineContext</a></li>
+  <li>HKUDS, <em>"nanobot: Ultra-Lightweight Personal AI Assistant,"</em> 2025. <a href="https://github.com/HKUDS/nanobot">github.com/HKUDS/nanobot</a></li>
+  <li>ActivityWatch Contributors, <em>"ActivityWatch: Open-Source Automated Time Tracker,"</em> 2024. <a href="https://github.com/ActivityWatch/activitywatch">github.com/ActivityWatch/activitywatch</a></li>
+  <li>Screenpipe Contributors, <em>"Screenpipe: AI Memory for Your Screen,"</em> 2024. <a href="https://github.com/mediar-ai/screenpipe">github.com/mediar-ai/screenpipe</a></li>
+  <li>Yuka-friends, <em>"Windrecorder: Personal Memory Search Engine for Windows,"</em> 2024. <a href="https://github.com/yuka-friends/Windrecorder">github.com/yuka-friends/Windrecorder</a></li>
+  <li>Arkohut, <em>"Pensieve: Privacy-First Passive Recording,"</em> 2024. <a href="https://github.com/arkohut/pensieve">github.com/arkohut/pensieve</a></li>
+  <li>OpenRecall Contributors, <em>"OpenRecall: Open-Source Digital Memory,"</em> 2024. <a href="https://github.com/openrecall/openrecall">github.com/openrecall/openrecall</a></li>
+  <li>Gurgeh, <em>"Selfspy: Daemon for Recording Computer Activity,"</em> GitHub. <a href="https://github.com/gurgeh/selfspy">github.com/gurgeh/selfspy</a></li>
+</ol>
+
+</article>
+
+<footer>
+  <p style="font-family:var(--font-body);font-size:15px;letter-spacing:0.02em;">
+    <em><strong style="color:var(--c-accent);">Data Intelligence Lab</strong> @ <a href="https://github.com/HKUDS" style="color:var(--c-text-2);text-decoration:none;border-bottom:1px dashed var(--c-text-3);">HKU</a></em>
+    <span style="margin:0 6px;opacity:0.4;">·</span>
+    <em style="color:var(--c-text-3);">March Releases</em>
+  </p>
+  <p style="margin-top:12px;">
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fhkuds.github.io%2Fcatchme&count_bg=%23C0654A&title_bg=%23555555&icon=&emoji=&icon_color=%23E7E7E7&title=views&edge_flat=true" alt="Page Views"/>
+  </p>
+</footer>
+
+<script>
+const toggle = document.getElementById('theme-toggle');
+const sun = toggle.querySelector('.icon-sun');
+const moon = toggle.querySelector('.icon-moon');
+function setTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+  if (t === 'dark') { sun.style.display = 'none'; moon.style.display = 'block'; }
+  else { sun.style.display = 'block'; moon.style.display = 'none'; }
+}
+toggle.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  setTheme(cur === 'dark' ? 'light' : 'dark');
+});
+const saved = localStorage.getItem('theme');
+if (saved) setTheme(saved);
+else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+
+// ── Table of Contents ──
+(function() {
+  const toc = document.getElementById('toc');
+  if (!toc) return;
+  const headings = document.querySelectorAll('article h2, article h3');
+  let html = '<div class="toc-title">Contents</div>';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    const cls = h.tagName === 'H3' ? ' class="toc-h3"' : ' class="toc-h2"';
+    html += '<a href="#' + h.id + '"' + cls + '>' + h.textContent.trim() + '</a>';
+  });
+  toc.innerHTML = html;
+  const links = toc.querySelectorAll('a');
+  let current = null;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        if (current) current.classList.remove('active');
+        const link = toc.querySelector('a[href="#' + entry.target.id + '"]');
+        if (link) { link.classList.add('active'); current = link; }
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+  links.forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById(this.getAttribute('href').slice(1));
+      if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

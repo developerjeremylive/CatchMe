@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 685 380" width="685" height="380" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="ds" x="-6%" y="-14%" width="112%" height="136%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#1a1a1a" flood-opacity="0.05"/>
+    </filter>
+    <marker id="ao" viewBox="0 0 10 7" refX="9" refY="3.5" markerWidth="6" markerHeight="4.5" orient="auto">
+      <polygon points="0 0.8,8 3.5,0 6.2" fill="#c0654a"/>
+    </marker>
+    <marker id="flow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="6" markerHeight="5" orient="auto">
+      <path d="M 1,1 L 8,4 L 1,7" fill="none" stroke="#c0654a" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#c0654a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- ============================================================ -->
+  <!-- TITLE FLOW ARROWS                                            -->
+  <!-- ============================================================ -->
+  <line x1="127" y1="17" x2="277" y2="17" stroke="#c0654a" stroke-width="0.9" opacity="0.4" marker-end="url(#flow)"/>
+  <line x1="351" y1="17" x2="521" y2="17" stroke="#c0654a" stroke-width="0.9" opacity="0.4" marker-end="url(#flow)"/>
+
+  <!-- ============================================================ -->
+  <!-- CAPTURING  (x: 18–146)                                       -->
+  <!-- ============================================================ -->
+  <text x="82" y="22" text-anchor="middle" font-size="15" font-weight="600" fill="#c0654a">Capturing</text>
+
+  <rect x="18" y="38" width="128" height="241" rx="14" fill="#f7f3ee" stroke="#e0dbd4" stroke-width="1.1" filter="url(#ds)"/>
+
+  <rect x="28" y="47" width="108" height="33" rx="6" fill="#fff" stroke="#ece6de"/>
+  <g transform="translate(37,53)"><rect width="18" height="13" rx="2" fill="#c0654a" fill-opacity="0.06" stroke="#c0654a" stroke-width="0.5" opacity="0.5"/><circle cx="3" cy="2.5" r="1" fill="#c0654a" opacity="0.3"/><circle cx="6" cy="2.5" r="1" fill="#c0654a" opacity="0.25"/><circle cx="9" cy="2.5" r="1" fill="#c0654a" opacity="0.2"/><line x1="2" y1="5" x2="16" y2="5" stroke="#c0654a" stroke-width="0.3" opacity="0.2"/></g>
+  <text x="94" y="69" text-anchor="middle" font-size="10" font-weight="500" fill="#555">Window</text>
+
+  <rect x="28" y="85" width="108" height="33" rx="6" fill="#fff" stroke="#ece6de"/>
+  <g transform="translate(36,91)"><rect width="20" height="13" rx="1.5" fill="#c0654a" fill-opacity="0.06" stroke="#c0654a" stroke-width="0.5" opacity="0.5"/><g fill="#c0654a" opacity="0.25"><rect x="2" y="2" width="3.5" height="2" rx="0.4"/><rect x="6.5" y="2" width="3.5" height="2" rx="0.4"/><rect x="11" y="2" width="3.5" height="2" rx="0.4"/><rect x="15.5" y="2" width="3.5" height="2" rx="0.4"/><rect x="2" y="5" width="3.5" height="2" rx="0.4"/><rect x="6.5" y="5" width="3.5" height="2" rx="0.4"/><rect x="11" y="5" width="3.5" height="2" rx="0.4"/><rect x="15.5" y="5" width="3.5" height="2" rx="0.4"/><rect x="5" y="8.5" width="10" height="2" rx="0.4"/></g></g>
+  <text x="94" y="107" text-anchor="middle" font-size="10" font-weight="500" fill="#555">Keyboard</text>
+
+  <rect x="28" y="123" width="108" height="33" rx="6" fill="#fff" stroke="#ece6de"/>
+  <g transform="translate(38,129)"><ellipse cx="8" cy="9" rx="6" ry="8.5" fill="#c0654a" fill-opacity="0.06" stroke="#c0654a" stroke-width="0.5" opacity="0.5"/><line x1="8" y1="3" x2="8" y2="8" stroke="#c0654a" stroke-width="0.5" opacity="0.3"/><circle cx="8" cy="5" r="1.2" fill="#c0654a" opacity="0.2"/></g>
+  <text x="94" y="145" text-anchor="middle" font-size="10" font-weight="500" fill="#555">Mouse</text>
+
+  <rect x="28" y="161" width="108" height="33" rx="6" fill="#fff" stroke="#ece6de"/>
+  <g transform="translate(40,166)"><rect y="3" width="13" height="17" rx="2" fill="#c0654a" fill-opacity="0.06" stroke="#c0654a" stroke-width="0.5" opacity="0.5"/><rect x="3" y="0" width="7" height="4" rx="1.5" fill="#c0654a" fill-opacity="0.06" stroke="#c0654a" stroke-width="0.5" opacity="0.5"/><line x1="3" y1="9" x2="10" y2="9" stroke="#c0654a" opacity="0.2" stroke-width="0.5"/><line x1="3" y1="13" x2="8" y2="13" stroke="#c0654a" opacity="0.2" stroke-width="0.5"/></g>
+  <text x="94" y="183" text-anchor="middle" font-size="10" font-weight="500" fill="#555">Clipboard</text>
+
+  <rect x="28" y="199" width="108" height="33" rx="6" fill="#fff" stroke="#ece6de"/>
+  <g transform="translate(38,205)"><circle cx="8" cy="8" r="7.5" fill="#c0654a" fill-opacity="0.06" stroke="#c0654a" stroke-width="0.5" opacity="0.5"/><line x1="8" y1="8" x2="8" y2="3" stroke="#c0654a" stroke-width="0.5" opacity="0.3" stroke-linecap="round"/><line x1="8" y1="8" x2="12" y2="11" stroke="#c0654a" stroke-width="0.5" opacity="0.3" stroke-linecap="round"/><circle cx="8" cy="8" r="1" fill="#c0654a" opacity="0.25"/></g>
+  <text x="94" y="221" text-anchor="middle" font-size="10" font-weight="500" fill="#555">Idle</text>
+
+  <rect x="28" y="237" width="108" height="33" rx="6" fill="#fff" stroke="#ece6de"/>
+  <g transform="translate(37,242)"><path d="M 3,13 C 3,7 6,2 9,2 C 12,2 15,7 15,13" fill="#c0654a" fill-opacity="0.06" stroke="#c0654a" stroke-width="0.5" opacity="0.5"/><line x1="2" y1="13" x2="16" y2="13" stroke="#c0654a" stroke-width="0.5" opacity="0.4"/><circle cx="9" cy="15.5" r="1.5" fill="#c0654a" opacity="0.2"/><circle cx="14" cy="3" r="2" fill="#c0654a" opacity="0.25"/></g>
+  <text x="94" y="259" text-anchor="middle" font-size="10" font-weight="500" fill="#555">Notification</text>
+
+  <!-- Full dashed flow line: container bottom → timeline, cluster sits at midpoint -->
+  <!-- Upper segment: container → cluster top -->
+  <path d="M 82,279 L 82,308" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="3,2" fill="none" opacity="0.35"/>
+  <!-- Lower segment: cluster bottom → timeline -->
+  <path d="M 82,330 L 82,350" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="3,2" fill="none" opacity="0.35" marker-end="url(#ao)"/>
+
+  <!-- Event cluster at midpoint of dashed line (center y≈319) -->
+  <g fill="#c0654a">
+    <circle cx="73" cy="319" r="2.2" opacity="0.65"/>
+    <circle cx="79" cy="315" r="2.8" opacity="0.45"/>
+    <circle cx="86" cy="320" r="2.0" opacity="0.75"/>
+    <circle cx="81" cy="323" r="1.6" opacity="0.4"/>
+    <circle cx="90" cy="316" r="1.8" opacity="0.5"/>
+    <circle cx="75" cy="324" r="1.4" opacity="0.3"/>
+    <circle cx="92" cy="322" r="1.5" opacity="0.35"/>
+    <circle cx="68" cy="317" r="1.3" opacity="0.25"/>
+  </g>
+  <!-- cluster label -->
+  <text x="100" y="321" font-size="7.5" font-style="italic" font-weight="700" fill="#c0654a" opacity="0.55">cluster</text>
+
+  <!-- ============================================================ -->
+  <!-- INDEXING  (shifted +48px right for equal gaps)                -->
+  <g transform="translate(48,0)">
+  <!-- ============================================================ -->
+  <!-- Left=gray(done), Right=accent(3 branches, solid→dashed)      -->
+  <!-- ============================================================ -->
+  <text x="265" y="22" text-anchor="middle" font-size="15" font-weight="600" fill="#c0654a">Indexing</text>
+
+  <!-- ── EDGES ── -->
+  <line x1="265" y1="57" x2="208" y2="102" stroke="#d0cbc4" stroke-width="1.2"/>
+  <line x1="265" y1="57" x2="328" y2="102" stroke="#c0654a" stroke-width="1.4"/>
+
+  <line x1="208" y1="115" x2="186" y2="163" stroke="#d0cbc4" stroke-width="1.0"/>
+  <line x1="208" y1="115" x2="226" y2="163" stroke="#d0cbc4" stroke-width="1.0"/>
+  <line x1="328" y1="115" x2="298" y2="163" stroke="#c0654a" stroke-width="1.2"/>
+  <line x1="328" y1="115" x2="334" y2="163" stroke="#c0654a" stroke-width="1.2"/>
+  <line x1="328" y1="115" x2="364" y2="163" stroke="#c0654a" stroke-width="1.1" stroke-dasharray="4,2" opacity="0.7"/>
+
+  <line x1="186" y1="173" x2="178" y2="224" stroke="#d0cbc4" stroke-width="0.8"/>
+  <line x1="186" y1="173" x2="194" y2="224" stroke="#d0cbc4" stroke-width="0.8"/>
+  <line x1="226" y1="173" x2="218" y2="224" stroke="#d0cbc4" stroke-width="0.8"/>
+  <line x1="226" y1="173" x2="234" y2="224" stroke="#d0cbc4" stroke-width="0.8"/>
+  <line x1="298" y1="173" x2="290" y2="224" stroke="#c0654a" stroke-width="1.0"/>
+  <line x1="298" y1="173" x2="306" y2="224" stroke="#c0654a" stroke-width="1.0"/>
+  <line x1="334" y1="173" x2="326" y2="224" stroke="#c0654a" stroke-width="0.9" stroke-dasharray="3,2" opacity="0.7"/>
+  <line x1="334" y1="173" x2="342" y2="224" stroke="#c0654a" stroke-width="0.9" stroke-dasharray="3,2" opacity="0.55"/>
+  <line x1="364" y1="173" x2="360" y2="224" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.4"/>
+
+  <line x1="178" y1="232" x2="176" y2="279" stroke="#d0cbc4" stroke-width="0.6"/>
+  <line x1="194" y1="232" x2="196" y2="279" stroke="#d0cbc4" stroke-width="0.6"/>
+  <line x1="218" y1="232" x2="216" y2="279" stroke="#d0cbc4" stroke-width="0.6"/>
+  <line x1="234" y1="232" x2="236" y2="279" stroke="#d0cbc4" stroke-width="0.6"/>
+  <line x1="290" y1="232" x2="288" y2="279" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.55"/>
+  <line x1="306" y1="232" x2="308" y2="279" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.45"/>
+  <line x1="326" y1="232" x2="324" y2="279" stroke="#c0654a" stroke-width="0.7" stroke-dasharray="2,2" opacity="0.3"/>
+
+  <!-- ── NODES ── -->
+  <circle cx="265" cy="48" r="9" fill="none" stroke="#c0654a" stroke-width="1.6"/>
+
+  <circle cx="208" cy="108" r="6.5" fill="none" stroke="#d0cbc4" stroke-width="1.1"/>
+  <circle cx="328" cy="108" r="6.5" fill="none" stroke="#c0654a" stroke-width="1.4"/>
+
+  <circle cx="186" cy="168" r="5" fill="none" stroke="#d0cbc4" stroke-width="1.0"/>
+  <circle cx="226" cy="168" r="5" fill="none" stroke="#d0cbc4" stroke-width="1.0"/>
+  <circle cx="298" cy="168" r="5" fill="none" stroke="#c0654a" stroke-width="1.2"/>
+  <circle cx="334" cy="168" r="5" fill="none" stroke="#c0654a" stroke-width="1.2"/>
+  <circle cx="364" cy="168" r="5" fill="none" stroke="#c0654a" stroke-width="1.0" stroke-dasharray="3,2" opacity="0.65"/>
+
+  <circle cx="178" cy="228" r="4" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+  <circle cx="194" cy="228" r="4" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+  <circle cx="218" cy="228" r="4" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+  <circle cx="234" cy="228" r="4" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+  <circle cx="290" cy="228" r="4" fill="none" stroke="#c0654a" stroke-width="1.0"/>
+  <circle cx="306" cy="228" r="4" fill="none" stroke="#c0654a" stroke-width="1.0"/>
+  <circle cx="326" cy="228" r="4" fill="none" stroke="#c0654a" stroke-width="0.9" stroke-dasharray="2.5,1.5" opacity="0.6"/>
+  <circle cx="342" cy="228" r="4" fill="none" stroke="#c0654a" stroke-width="0.9" stroke-dasharray="2.5,1.5" opacity="0.45"/>
+  <circle cx="360" cy="228" r="3.5" fill="none" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="2.5,1.5" opacity="0.35"/>
+
+  <circle cx="176" cy="282" r="3" fill="none" stroke="#d0cbc4" stroke-width="0.7"/>
+  <circle cx="196" cy="282" r="3" fill="none" stroke="#d0cbc4" stroke-width="0.7"/>
+  <circle cx="216" cy="282" r="3" fill="none" stroke="#d0cbc4" stroke-width="0.7"/>
+  <circle cx="236" cy="282" r="3" fill="none" stroke="#d0cbc4" stroke-width="0.7"/>
+  <circle cx="288" cy="282" r="3" fill="none" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="2,1.5" opacity="0.5"/>
+  <circle cx="308" cy="282" r="3" fill="none" stroke="#c0654a" stroke-width="0.8" stroke-dasharray="2,1.5" opacity="0.4"/>
+  <circle cx="324" cy="282" r="2.5" fill="none" stroke="#c0654a" stroke-width="0.7" stroke-dasharray="2,1.5" opacity="0.25"/>
+
+  <!-- Timeline → Indexing: split around midpoint motif (center y≈324) -->
+  <!-- lower segment: timeline → motif -->
+  <path d="M 260,358 L 260,335" stroke="#c0654a" stroke-width="0.9" stroke-dasharray="4,3" fill="none" opacity="0.35"/>
+  <!-- upper segment: motif → tree bottom, with arrow -->
+  <path d="M 260,313 L 260,290" stroke="#c0654a" stroke-width="0.9" stroke-dasharray="4,3" fill="none" marker-end="url(#ao)" opacity="0.35"/>
+
+  <!-- "filter & organize" motif: mini-tree diamond (3-2-1 rows, top-down) -->
+  <g fill="#c0654a">
+    <!-- top row: 1 dot -->
+    <circle cx="260" cy="317" r="2.4" opacity="0.75"/>
+    <!-- mid row: 2 dots -->
+    <circle cx="255" cy="324" r="1.9" opacity="0.55"/>
+    <circle cx="265" cy="324" r="1.9" opacity="0.55"/>
+    <!-- bottom row: 3 dots -->
+    <circle cx="251" cy="331" r="1.4" opacity="0.35"/>
+    <circle cx="260" cy="331" r="1.6" opacity="0.45"/>
+    <circle cx="269" cy="331" r="1.4" opacity="0.35"/>
+  </g>
+  <text x="276" y="326" font-size="7.5" font-style="italic" font-weight="700" fill="#c0654a" opacity="0.55">filter &amp; organize</text>
+  </g><!-- end Indexing translate -->
+
+  <!-- ============================================================ -->
+  <!-- RETRIEVING  (center ≈ 565, shifted right, no LLM arrow)      -->
+  <!-- ============================================================ -->
+  <text x="565" y="22" text-anchor="middle" font-size="15" font-weight="600" fill="#c0654a">Retrieving</text>
+
+  <!-- tree + cluster shifted up 10px to align root with Indexing root -->
+  <g transform="translate(0,-10)">
+
+  <!-- ── EDGES ── -->
+  <line x1="565" y1="67" x2="510" y2="104" stroke="#c0654a" stroke-width="1.6"/>
+  <line x1="565" y1="67" x2="562" y2="104" stroke="#d0cbc4" stroke-width="0.9"/>
+  <line x1="565" y1="67" x2="628" y2="104" stroke="#c0654a" stroke-width="1.6"/>
+
+  <line x1="510" y1="117" x2="488" y2="163" stroke="#c0654a" stroke-width="1.4"/>
+  <line x1="510" y1="117" x2="532" y2="163" stroke="#c0654a" stroke-width="1.2"/>
+  <line x1="562" y1="116" x2="562" y2="163" stroke="#d0cbc4" stroke-width="0.7"/>
+  <line x1="628" y1="117" x2="604" y2="163" stroke="#c0654a" stroke-width="1.4"/>
+  <line x1="628" y1="117" x2="634" y2="163" stroke="#d0cbc4" stroke-width="0.8"/>
+  <line x1="628" y1="117" x2="660" y2="163" stroke="#c0654a" stroke-width="1.2"/>
+
+  <line x1="488" y1="173" x2="476" y2="221" stroke="#c0654a" stroke-width="1.2"/>
+  <line x1="488" y1="173" x2="502" y2="221" stroke="#d0cbc4" stroke-width="0.7"/>
+  <line x1="604" y1="173" x2="598" y2="221" stroke="#c0654a" stroke-width="1.1"/>
+  <line x1="604" y1="173" x2="614" y2="221" stroke="#d0cbc4" stroke-width="0.7"/>
+
+  <line x1="476" y1="229" x2="470" y2="279" stroke="#c0654a" stroke-width="1.0"/>
+  <line x1="476" y1="229" x2="484" y2="279" stroke="#d0cbc4" stroke-width="0.6"/>
+
+  <!-- ── NODES ── -->
+  <circle cx="565" cy="58" r="9" fill="#c0654a" filter="url(#glow)"/>
+
+  <circle cx="510" cy="110" r="6.5" fill="#c0654a" opacity="0.85"/>
+  <circle cx="562" cy="110" r="5.5" fill="none" stroke="#d0cbc4" stroke-width="1.0"/>
+  <circle cx="628" cy="110" r="6.5" fill="#c0654a" opacity="0.85"/>
+
+  <circle cx="488" cy="168" r="5" fill="#c0654a" opacity="0.75"/>
+  <circle cx="532" cy="168" r="5" fill="#c0654a" opacity="0.65"/>
+  <circle cx="562" cy="168" r="4" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+  <circle cx="604" cy="168" r="5" fill="#c0654a" opacity="0.75"/>
+  <circle cx="634" cy="168" r="4" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+  <circle cx="660" cy="168" r="5" fill="#c0654a" opacity="0.65"/>
+
+  <circle cx="476" cy="225" r="4" fill="#c0654a" opacity="0.65"/>
+  <circle cx="502" cy="225" r="3.5" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+  <circle cx="598" cy="225" r="4" fill="#c0654a" opacity="0.6"/>
+  <circle cx="614" cy="225" r="3.5" fill="none" stroke="#d0cbc4" stroke-width="0.8"/>
+
+  <circle cx="470" cy="282" r="3.5" fill="#c0654a" opacity="0.55"/>
+  <circle cx="484" cy="282" r="3" fill="none" stroke="#d0cbc4" stroke-width="0.7"/>
+
+  <!-- ── CONVERGENCE ── -->
+  <path d="M 470,300 C 470,312 558,318 565,320" stroke="#c0654a" stroke-width="1.4" fill="none" opacity="0.65"/>
+  <path d="M 532,188 C 532,262 558,314 565,320" stroke="#c0654a" stroke-width="1.0" fill="none" opacity="0.38" stroke-dasharray="4,2"/>
+  <path d="M 598,244 C 598,290 572,316 565,320" stroke="#c0654a" stroke-width="1.3" fill="none" opacity="0.55"/>
+  <path d="M 660,188 C 660,262 572,314 565,320" stroke="#c0654a" stroke-width="1.0" fill="none" opacity="0.38" stroke-dasharray="4,2"/>
+
+  <!-- Answer cluster -->
+  <g fill="#c0654a">
+    <circle cx="565" cy="334" r="3.0" opacity="0.8"/>
+    <circle cx="554" cy="334" r="2.3" opacity="0.6"/>
+    <circle cx="576" cy="334" r="2.3" opacity="0.6"/>
+    <circle cx="546" cy="333" r="1.6" opacity="0.4"/>
+    <circle cx="584" cy="333" r="1.6" opacity="0.4"/>
+    <circle cx="565" cy="329" r="1.4" opacity="0.3"/>
+    <circle cx="565" cy="339" r="1.4" opacity="0.3"/>
+    <circle cx="540" cy="334" r="1.2" opacity="0.22"/>
+    <circle cx="590" cy="334" r="1.2" opacity="0.22"/>
+  </g>
+  <text x="597" y="337" font-size="7.5" font-style="italic" font-weight="700" fill="#c0654a" opacity="0.55">integrate</text>
+
+  </g><!-- end tree translate -->
+
+  <!-- Answer pill — midpoint at timeline y=358 -->
+  <path d="M 565,332 L 565,345" stroke="#c0654a" stroke-width="1" fill="none" opacity="0.5"/>
+  <rect x="525" y="346" width="80" height="24" rx="8" fill="#fdf5f1" stroke="#c0654a" stroke-width="1" filter="url(#ds)"/>
+  <text x="565" y="363" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c0654a">Answer</text>
+
+  <!-- ============================================================ -->
+  <!-- TIMELINE  (y=358, capturing+indexing)                         -->
+  <!-- ============================================================ -->
+  <line x1="18" y1="358" x2="415" y2="358" stroke="#e5e0da" stroke-width="1.1"/>
+
+  <g fill="#c0654a">
+    <circle cx="30"  cy="358" r="1.3" opacity="0.08"/>
+    <circle cx="46"  cy="358" r="1.5" opacity="0.10"/>
+    <circle cx="64"  cy="358" r="1.3" opacity="0.12"/>
+    <circle cx="82"  cy="358" r="1.6" opacity="0.14"/>
+    <circle cx="100" cy="358" r="1.4" opacity="0.16"/>
+    <circle cx="120" cy="358" r="1.6" opacity="0.18"/>
+    <circle cx="148" cy="358" r="1.8" opacity="0.24"/>
+    <circle cx="174" cy="358" r="2.0" opacity="0.32"/>
+    <circle cx="200" cy="358" r="1.8" opacity="0.42"/>
+    <circle cx="224" cy="358" r="2.2" opacity="0.54"/>
+    <circle cx="248" cy="358" r="2.0" opacity="0.66"/>
+    <circle cx="272" cy="358" r="2.4" opacity="0.78"/>
+    <circle cx="296" cy="358" r="2.2" opacity="0.90"/>
+    <circle cx="318" cy="358" r="2.6" opacity="0.95"/>
+    <circle cx="340" cy="358" r="2.4" opacity="0.90"/>
+    <circle cx="360" cy="358" r="2.2" opacity="0.78"/>
+    <circle cx="380" cy="358" r="2.0" opacity="0.55"/>
+    <circle cx="398" cy="358" r="1.6" opacity="0.35"/>
+    <circle cx="412" cy="358" r="1.4" opacity="0.22"/>
+  </g>
+
+  <text x="82"  y="374" text-anchor="middle" font-size="7" fill="#b5b0a8" font-style="italic">raw events</text>
+  <text x="348" y="374" text-anchor="middle" font-size="7" fill="#b5b0a8" font-style="italic">index &amp; summarize</text>
+
+  <line x1="155" y1="353" x2="155" y2="363" stroke="#e0dbd4" stroke-width="0.7"/>
+
+</svg>
