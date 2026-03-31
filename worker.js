@@ -15,4 +15,96 @@ export default {
   }
 };
 
-const INDEX_HTML = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>CatchMe - Playground</title><style>*{margin:0;padding:0}body{font-family:-apple-system,sans-serif;background:#0f0f1a;color:#f8f9fa}.container{max-width:1200px;margin:0 auto;padding:2rem}h1{font-size:2.5rem;background:linear-gradient(135deg,#ff6b35,#f7931e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.subtitle{color:#6c757d;margin-bottom:2rem}.btn{display:inline-block;padding:0.75rem 1.5rem;border-radius:50px;font-weight:600;text-decoration:none;margin-right:1rem}.btn-primary{background:linear-gradient(135deg,#ff6b35,#f7931e);color:#fff}.btn-outline{border:2px solid #ff6b35;color:#ff6b35}section{padding:4rem 0}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.feature-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:1.5rem}.feature-icon{font-size:2rem;margin-bottom:0.5rem}.feature-card h3{font-size:1.1rem;margin-bottom:0.5rem}.feature-card p{color:#6c757d;font-size:0.9rem}.playground{background:#1a1a2e;border-radius:20px;padding:2rem;border:1px solid rgba(255,107,53,0.3);margin-top:2rem}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}.stat-card{background:rgba(255,107,53,0.1);padding:1rem;border-radius:12px;text-align:center}.stat-value{font-size:1.5rem;font-weight:700;color:#ff6b35}.stat-label{color:#6c757d;font-size:0.8rem}.search-box{width:100%;padding:1rem;border-radius:8px;border:1px solid rgba(255,107,53,0.3);background:#0f0f1a;color:#fff;font-size:1rem}.events-list{display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem}.event{background:rgba(255,255,255,0.02);padding:1rem;border-radius:8px;border-left:3px solid #ff6b35}.event-app{font-weight:600}.event-time{font-size:0.8rem;color:#6c757d;float:right}.event-title{font-size:0.9rem;color:#6c757d}.demo-notice{margin-top:1.5rem;padding:1rem;background:rgba(22,199,154,0.1);border-radius:8px}</style></head><body><div class="container"><h1>🦞 CatchMe</h1><p class="subtitle">Capture Your Entire Digital Footprint. Lightweight & Vectorless & Powerful.</p><div style="margin-bottom:3rem"><a href="#playground" class="btn btn-primary">🎮 Try Playground</a><a href="https://github.com/developerjeremylive/CatchMe" target="_blank" class="btn btn-outline">View on GitHub</a></div><section id="features"><h2 style="margin-bottom:2rem">🔑 Key Features</h2><div class="features-grid"><div class="feature-card"><div class="feature-icon">⚡</div><h3>Event-Driven Recording</h3><p>No delays - catch mouse actions instantly.</p></div><div class="feature-card"><div class="feature-icon">📊</div><h3>Comprehensive Context</h3><p>Five recorders track windows, keyboard, clipboard, notifications, files.</p></div><div class="feature-card"><div class="feature-icon">🌲</div><h3>Auto-Organization</h3><p>Day → Session → App → Location → Action.</p></div><div class="feature-card"><div class="feature-icon">🧠</div><h3>Smart Summaries</h3><p>LLM summaries transform logs into searchable knowledge trees.</p></div><div class="feature-card"><div class="feature-icon">🔍</div><h3>Top-Down Search</h3><p>LLM reads summaries, selects branches, drills down.</p></div><div class="feature-card"><div class="feature-icon">🔒</div><h3>Privacy First</h3><p>All data stays on your machine. Offline mode via Ollama/vLLM.</p></div></div></section><section id="playground"><h2 style="margin-bottom:1rem">🎮 Interactive Playground</h2><p class="subtitle">Experience the CatchMe dashboard interface</p><div class="playground"><div class="stats"><div class="stat-card"><div class="stat-value" id="totalEvents">-</div><div class="stat-label">Total Events</div></div><div class="stat-card"><div class="stat-value" id="activeDays">-</div><div class="stat-label">Active Days</div></div><div class="stat-card"><div class="stat-value" id="appsTracked">-</div><div class="stat-label">Apps Tracked</div></div><div class="stat-card"><div class="stat-value" id="sessions">-</div><div class="stat-label">Sessions</div></div></div><input type="text" class="search-box" placeholder="Search your memory... (e.g., What did I code today?)" id="searchInput"><div class="events-list" id="eventsList"></div><div class="demo-notice">ℹ️ Demo Mode - Install CatchMe locally for full functionality.</div></div></section></div><script>async function loadStats(){try{const res=await fetch("/api/stats");const data=await res.json();document.getElementById("totalEvents").textContent=data.totalEvents.toLocaleString();document.getElementById("activeDays").textContent=data.activeDays;document.getElementById("appsTracked").textContent=data.appsTracked;document.getElementById("sessions").textContent=data.sessions;}catch(e){console.error(e)}}async function loadEvents(){try{const res=await fetch("/api/events");const events=await res.json();const list=document.getElementById("eventsList");list.innerHTML=events.map(e=>`<div class="event"><span class="event-app">${e.app}</span><span class="event-time">${Math.round((Date.now()-e.timestamp)/60000)} min ago</span><div class="event-title">${e.title}</div></div>`).join("");}catch(e){console.error(e)}}loadStats();loadEvents();</script></body></html>`;
+const INDEX_HTML = `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CatchMe - Playground</title>
+<style>
+*{margin:0;padding:0}
+body{font-family:-apple-system,sans-serif;background:#0f0f1a;color:#f8f9fa}
+.container{max-width:1200px;margin:0 auto;padding:2rem}
+h1{font-size:2.5rem;background:linear-gradient(135deg,#ff6b35,#f7931e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#6c757d;margin-bottom:2rem}
+.btn{display:inline-block;padding:0.75rem 1.5rem;border-radius:50px;font-weight:600;text-decoration:none;margin-right:1rem}
+.btn-primary{background:linear-gradient(135deg,#ff6b35,#f7931e);color:#fff}
+.btn-outline{border:2px solid #ff6b35;color:#ff6b35}
+section{padding:4rem 0}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.feature-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:1.5rem}
+.feature-icon{font-size:2rem;margin-bottom:0.5rem}
+.feature-card h3{font-size:1.1rem;margin-bottom:0.5rem}
+.feature-card p{color:#6c757d;font-size:0.9rem}
+.playground{background:#1a1a2e;border-radius:20px;padding:2rem;border:1px solid rgba(255,107,53,0.3);margin-top:2rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat-card{background:rgba(255,107,53,0.1);padding:1rem;border-radius:12px;text-align:center}
+.stat-value{font-size:1.5rem;font-weight:700;color:#ff6b35}
+.stat-label{color:#6c757d;font-size:0.8rem}
+.search-box{width:100%;padding:1rem;border-radius:8px;border:1px solid rgba(255,107,53,0.3);background:#0f0f1a;color:#fff;font-size:1rem}
+.events-list{display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem}
+.event{background:rgba(255,255,255,0.02);padding:1rem;border-radius:8px;border-left:3px solid #ff6b35}
+.event-app{font-weight:600}
+.event-time{font-size:0.8rem;color:#6c757d;float:right}
+.event-title{font-size:0.9rem;color:#6c757d}
+.demo-notice{margin-top:1.5rem;padding:1rem;background:rgba(22,199,154,0.1);border-radius:8px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🦞 CatchMe</h1>
+<p class="subtitle">Capture Your Entire Digital Footprint. Lightweight & Vectorless & Powerful.</p>
+<div style="margin-bottom:3rem">
+<a href="#playground" class="btn btn-primary">🎮 Try Playground</a>
+<a href="https://github.com/developerjeremylive/CatchMe" target="_blank" class="btn btn-outline">View on GitHub</a>
+</div>
+<section id="features">
+<h2 style="margin-bottom:2rem">🔑 Key Features</h2>
+<div class="features-grid">
+<div class="feature-card"><div class="feature-icon">⚡</div><h3>Event-Driven Recording</h3><p>No delays - catch mouse actions instantly.</p></div>
+<div class="feature-card"><div class="feature-icon">📊</div><h3>Comprehensive Context</h3><p>Five recorders track windows, keyboard, clipboard, notifications, files.</p></div>
+<div class="feature-card"><div class="feature-icon">🌲</div><h3>Auto-Organization</h3><p>Day → Session → App → Location → Action.</p></div>
+<div class="feature-card"><div class="feature-icon">🧠</div><h3>Smart Summaries</h3><p>LLM summaries transform logs into searchable knowledge trees.</p></div>
+<div class="feature-card"><div class="feature-icon">🔍</div><h3>Top-Down Search</h3><p>LLM reads summaries, selects branches, drills down.</p></div>
+<div class="feature-card"><div class="feature-icon">🔒</div><h3>Privacy First</h3><p>All data stays on your machine. Offline mode via Ollama/vLLM.</p></div>
+</div>
+</section>
+<section id="playground">
+<h2 style="margin-bottom:1rem">🎮 Interactive Playground</h2>
+<p class="subtitle">Experience the CatchMe dashboard interface</p>
+<div class="playground">
+<div class="stats">
+<div class="stat-card"><div class="stat-value" id="totalEvents">-</div><div class="stat-label">Total Events</div></div>
+<div class="stat-card"><div class="stat-value" id="activeDays">-</div><div class="stat-label">Active Days</div></div>
+<div class="stat-card"><div class="stat-value" id="appsTracked">-</div><div class="stat-label">Apps Tracked</div></div>
+<div class="stat-card"><div class="stat-value" id="sessions">-</div><div class="stat-label">Sessions</div></div>
+</div>
+<input type="text" class="search-box" placeholder="Search your memory... (e.g., What did I code today?)" id="searchInput">
+<div class="events-list" id="eventsList"></div>
+<div class="demo-notice">ℹ️ Demo Mode - Install CatchMe locally for full functionality.</div>
+</div>
+</section>
+</div>
+<script>
+async function loadStats(){
+  try{
+    const res=await fetch("/api/stats");
+    const data=await res.json();
+    document.getElementById("totalEvents").textContent=data.totalEvents.toLocaleString();
+    document.getElementById("activeDays").textContent=data.activeDays;
+    document.getElementById("appsTracked").textContent=data.appsTracked;
+    document.getElementById("sessions").textContent=data.sessions;
+  }catch(e){console.error(e)}
+}
+async function loadEvents(){
+  try{
+    const res=await fetch("/api/events");
+    const events=await res.json();
+    const list=document.getElementById("eventsList");
+    list.innerHTML=events.map(e=>`<div class="event"><span class="event-app">${e.app}</span><span class="event-time">${Math.round((Date.now()-e.timestamp)/60000)} min ago</span><div class="event-title">${e.title}</div></div>`).join("");
+  }catch(e){console.error(e)}
+}
+loadStats();
+loadEvents();
+</script>
+</body>
+</html>`;
